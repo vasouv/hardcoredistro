@@ -7,6 +7,7 @@ First, I want to make it work. Features will be limited, people will only be abl
 The project is intended to be deployed properly on Jelastic and used by people. The first release will be mainly for testing purposes, if it's acceptable I'll see to add Stripe payments. I'll keep the entities and their relationships fairly simple, I'm not expecting such traffic that will lag the DB. 
 
 ## PostgreSQL
+The database must be running on port 5432. A database with name "postgres" must be present and a schema named "potori". Then add the SQL data in the "sql-test-data" folder.
 
 ## Payara - PostgreSQL connectivity
 I've configured Payara to connect with the DB and keep a connection pool, since I'll be using the same DB for auth purposes.
