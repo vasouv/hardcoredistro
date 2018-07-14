@@ -6,6 +6,13 @@
 
 	<display-name>hardcoredistro</display-name>
 
+	<!-- Sets Primefaces theme to Omega -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>omega</param-value>
+	</context-param>
+
+	<!-- JSF servlets -->
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -19,4 +26,5 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
+	
 </web-app>
