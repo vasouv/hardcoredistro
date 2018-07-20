@@ -20,5 +20,9 @@ public class CustomerService {
 		List<Customer> all = query.getResultList();
 		return all;
 	}
+	
+	public void create(Customer c) {
+		em.persist(c);
+	}
 
 }
