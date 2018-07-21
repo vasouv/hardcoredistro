@@ -20,11 +20,12 @@
 						actionListener="#{cartBean.remove(album)}" ajax="false"></p:commandButton>
 				</p:column>
 				<f:facet name="footer">
-        	Total amount : #{cartBean.totalAmount()}
-    	</f:facet>
+        			Total amount : #{cartBean.totalAmount()} <p:spacer width="20" />
+        			<p:commandButton value="Clear Cart" actionListener="#{cartBean.clear()}" ajax="false"></p:commandButton>
+    			</f:facet>
 			</p:dataTable>
 		</h:form>
-		
+
 	</ui:define>
 
 </ui:composition>
