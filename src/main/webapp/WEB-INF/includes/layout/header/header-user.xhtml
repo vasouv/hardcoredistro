@@ -7,9 +7,10 @@
 	<h:form>
 		<p:menubar>
 
-			<p:menuitem value="Profile"/>
+			<p:menuitem value="Profile" url="profile.xhtml" />
 			<p:menuitem value="Store" url="store.xhtml" />
-			<p:menuitem value="Cart" url="cart.xhtml" />			
+			<p:menuitem value="Cart" url="cart.xhtml" />
+			<p:menuitem value="Checkout" url="checkout.xhtml" disabled="#{cartBean.albumsInCart.size()==0}" />
 
 			<f:facet name="options">
 				<p:commandButton type="button" value="Logout" />
