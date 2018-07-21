@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -32,7 +34,14 @@ public class StoreBean {
 	
 	public void addToCart() {
 		cart.add(selected);
+		showAddedAlbum();
 	}
+	
+	private void showAddedAlbum() {
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Added album", selected.getTitle()));
+    }
 	
 	public List<Album> getAlbums() {
 		return albums;
