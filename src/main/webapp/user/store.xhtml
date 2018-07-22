@@ -22,7 +22,7 @@
 				<p:column headerText="Price">#{album.price}</p:column>
 				<p:column headerText="Quantity">#{album.quantity}</p:column>
 				<p:column>
-					<p:commandButton value="Details" action="albumdetails.xhtml">
+					<p:commandButton value="Details" action="albumdetails.xhtml" icon="fa fa-ellipsis-h" >
 						<f:setPropertyActionListener value="#{album}"
 							target="#{albumDetailsBean.albumDetails}" />
 					</p:commandButton>
@@ -31,7 +31,7 @@
 				<p:column>
 					<p:commandButton value="Add to Cart"
 						action="#{storeBean.addToCart()}" disabled="#{album.quantity==0}"
-						update=":storeForm:addAlbumGrowl">
+						update=":storeForm:addAlbumGrowl" icon="fa fa-cart-plus">
 						<f:setPropertyActionListener value="#{album}"
 							target="#{storeBean.selected}" />
 					</p:commandButton>
