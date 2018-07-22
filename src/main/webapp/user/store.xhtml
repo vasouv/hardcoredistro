@@ -8,15 +8,16 @@
 	<ui:param name="title" value="Store" />
 
 	<ui:define name="content">
-	
+
 		<h:form id="storeForm">
-		
+
 			<p:growl id="addAlbumGrowl" showDetail="true" life="2000" />
-			
+
 			<p:dataTable value="#{storeBean.albums}" var="album">
 				<p:column headerText="Id">#{album.id}</p:column>
 				<p:column headerText="Title">#{album.title}</p:column>
 				<p:column headerText="Band">#{album.band}</p:column>
+				<p:column headerText="Label">#{album.label}</p:column>
 				<p:column headerText="Year">#{album.year}</p:column>
 				<p:column headerText="Price">#{album.price}</p:column>
 				<p:column headerText="Quantity">#{album.quantity}</p:column>
@@ -29,15 +30,16 @@
 
 				<p:column>
 					<p:commandButton value="Add to Cart"
-						action="#{storeBean.addToCart()}" disabled="#{album.quantity==0}" update=":storeForm:addAlbumGrowl">
+						action="#{storeBean.addToCart()}" disabled="#{album.quantity==0}"
+						update=":storeForm:addAlbumGrowl">
 						<f:setPropertyActionListener value="#{album}"
 							target="#{storeBean.selected}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
-			
+
 		</h:form>
-		
+
 	</ui:define>
 
 </ui:composition>

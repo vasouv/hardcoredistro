@@ -34,6 +34,10 @@ public class Album {
 	private String details;
 
 	@NotNull
+	@Column(name = "label")
+	private String label;
+
+	@NotNull
 	@Column(name = "photo_url")
 	private String photoUrl;
 
@@ -49,11 +53,12 @@ public class Album {
 
 	}
 
-	public Album(@NotNull String title, @NotNull String band, @NotNull int year, @NotNull String details,
-			@NotNull String photoUrl, @NotNull int quantity, @NotNull double price) {
+	public Album(@NotNull String title, @NotNull String band, @NotNull String label, @NotNull int year,
+			@NotNull String details, @NotNull String photoUrl, @NotNull int quantity, @NotNull double price) {
 		super();
 		this.title = title;
 		this.band = band;
+		this.label = label;
 		this.year = year;
 		this.details = details;
 		this.photoUrl = photoUrl;
@@ -83,6 +88,14 @@ public class Album {
 
 	public void setBand(String band) {
 		this.band = band;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 	public int getYear() {
