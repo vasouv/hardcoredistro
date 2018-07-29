@@ -1,48 +1,46 @@
 package vs.hardcoredistro.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "CUSTOMER")
+//@Table(name = "CUSTOMER")
 public class Customer {
 
 	@Id
-	@Column(name = "id")
+//	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-	@Column(name = "cemail")
+//	@Column(name = "cemail")
 	private String email;
 
 	@NotNull
-	@Column(name = "cpassword")
+//	@Column(name = "cpassword")
 	private String password;
 
 	@NotNull
-	@Column(name = "cname")
+//	@Column(name = "cname")
 	private String name;
 
 	@NotNull
-	@Column(name = "caddress")
+//	@Column(name = "caddress")
 	private String address;
 
 	@NotNull
-	@Column(name = "ccity")
+//	@Column(name = "ccity")
 	private String city;
 
 	@NotNull
-	@Column(name = "czipcode")
+//	@Column(name = "czipcode")
 	private String zipcode;
 
 	@NotNull
-	@Column(name = "ccountry")
+//	@Column(name = "ccountry")
 	private String country;
 
 	public Customer() {
