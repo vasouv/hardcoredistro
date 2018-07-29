@@ -28,11 +28,11 @@ public class Purchase {
 //	@Column(name = "date_placed")
 	private LocalDate datePlaced;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "total_amount")
 	private double totalAmount;
 
-	@NotNull
+//	@NotNull
 	@Enumerated(EnumType.STRING)
 //	@Column(name = "purchase_status")
 	private PurchaseStatus purchaseStatus;

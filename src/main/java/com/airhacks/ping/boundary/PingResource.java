@@ -72,19 +72,19 @@ public class PingResource {
 		return Response.ok(list).build();
 	}
 
-	@GET
-	@Path("purchases/1")
-	public Response firstPurchase() {
-		return Response.ok(purchaseService.first()).build();
-	}
-
-	@GET
-	@Path("purchases/vasouv")
-	public Response vasouv() {
-		List<Purchase> vasouv = purchaseService.vasouv();
-		GenericEntity<List<Purchase>> list = new GenericEntity<List<Purchase>>(vasouv) {
-		};
-		return Response.ok(list).build();
-	}
+//	@GET
+//	@Path("purchases/1")
+//	public Response firstPurchase() {
+//		return Response.ok(purchaseService.first()).build();
+//	}
+//
+//	@GET
+//	@Path("purchases/vasouv")
+//	public Response vasouv() {
+//		List<Purchase> vasouv = purchaseService.vasouv();
+//		GenericEntity<List<Purchase>> list = new GenericEntity<List<Purchase>>(vasouv) {
+//		};
+//		return Response.ok(list).build();
+//	}
 
 }

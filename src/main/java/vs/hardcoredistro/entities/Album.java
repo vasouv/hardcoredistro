@@ -25,7 +25,7 @@ public class Album {
 
 	@NotNull
 //	@Column(name = "release")
-	private int year;
+	private int yearOfRelease;
 
 	@NotNull
 //	@Column(name = "details")
@@ -52,7 +52,7 @@ public class Album {
 		super();
 		this.title = title;
 		this.band = band;
-		this.year = year;
+		this.yearOfRelease = year;
 		this.details = details;
 		this.label = label;
 		this.photoUrl = photoUrl;
@@ -79,12 +79,12 @@ public class Album {
 		this.band = band;
 	}
 
-	public int getYear() {
-		return year;
+	public int getYearOfRelease() {
+		return yearOfRelease;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setYearOfRelease(int yearOfRelease) {
+		this.yearOfRelease = yearOfRelease;
 	}
 
 	public String getDetails() {
@@ -121,7 +121,7 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", title=" + title + ", band=" + band + ", year=" + year + ", details=" + details
+		return "Album [id=" + id + ", title=" + title + ", band=" + band + ", year=" + yearOfRelease + ", details=" + details
 				+ ", label=" + label + ", photoUrl=" + photoUrl + ", price=" + price + "]";
 	}
 

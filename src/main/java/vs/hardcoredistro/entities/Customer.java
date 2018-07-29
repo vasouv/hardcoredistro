@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 //@Table(name = "CUSTOMER")
 public class Customer {
 
-	@Id
 //	@Column(name = "id")
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -23,23 +23,23 @@ public class Customer {
 //	@Column(name = "cpassword")
 	private String password;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "cname")
 	private String name;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "caddress")
 	private String address;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "ccity")
 	private String city;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "czipcode")
 	private String zipcode;
 
-	@NotNull
+//	@NotNull
 //	@Column(name = "ccountry")
 	private String country;
 
@@ -47,10 +47,11 @@ public class Customer {
 
 	}
 
-	public Customer(@NotNull String email, @NotNull String password) {
+	public Customer(@NotNull String email, @NotNull String password, @NotNull String name) {
 		super();
 		this.email = email;
 		this.password = password;
+                this.name = name;
 	}
 
 	public Long getId() {
