@@ -48,7 +48,7 @@ public class Purchase {
 //	@JoinTable(name = "PURCHASE_ALBUM", joinColumns = {
 //			@JoinColumn(name = "purchase_id", referencedColumnName = "id") }, inverseJoinColumns = {
 //					@JoinColumn(name = "album_id", referencedColumnName = "id") })
-	private List<OrderedAlbum> albums;
+	private List<OrderedAlbum> orderedAlbums;
 
 	public Purchase() {
 		// TODO Auto-generated constructor stub
@@ -58,7 +58,7 @@ public class Purchase {
 		super();
 		this.datePlaced = datePlaced;
 		this.customer = customer;
-		this.albums = albums;
+		this.orderedAlbums = albums;
 	}
 
 	public Long getId() {
@@ -109,12 +109,12 @@ public class Purchase {
 		this.customer = customer;
 	}
 
-	public List<OrderedAlbum> getAlbums() {
-		return albums;
+	public List<OrderedAlbum> getOrderedAlbums() {
+		return orderedAlbums;
 	}
 
-	public void setAlbums(List<OrderedAlbum> albums) {
-		this.albums = albums;
+	public void setOrderedAlbums(List<OrderedAlbum> albums) {
+		this.orderedAlbums = albums;
 	}
 
 }

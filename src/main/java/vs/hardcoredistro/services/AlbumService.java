@@ -20,6 +20,18 @@ public class AlbumService {
 		List<Album> all = query.getResultList();
 		return all;
 	}
+	
+	public Album findByID(Long id) {
+		return em.find(Album.class, id);
+	}
+	
+	public Album findByTitle(String title) {
+		return (Album) em.createQuery("select a from Album a where a.title=:title").setParameter("title", title).getSingleResult();
+	}
+	
+	public void create(Album album) {
+		em.persist(album);
+	}
 
 	public void remove(Album selected) {
 		Album toRemove = em.find(Album.class, selected.getId());
@@ -28,9 +40,7 @@ public class AlbumService {
 	}
 
 	public void disable(Album selected) {
-		Album toDisable = em.find(Album.class, selected.getId());
-		toDisable.setQuantity(1);
-		em.merge(toDisable);
+		// TODO: call stock service for album and set quantity to 0
 	}
 
 }
