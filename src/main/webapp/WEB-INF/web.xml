@@ -12,6 +12,12 @@
 		<param-value>omega</param-value>
 	</context-param>
 
+	<!-- Enables Font Awesome -->
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<!-- JSF servlets -->
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
@@ -26,5 +32,5 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
-	
+
 </web-app>

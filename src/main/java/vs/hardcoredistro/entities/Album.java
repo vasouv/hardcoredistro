@@ -1,48 +1,46 @@
 package vs.hardcoredistro.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ALBUM")
+//@Table(name = "ALBUM")
 public class Album {
 
 	@Id
-	@Column(name = "id")
+//	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-	@Column(name = "title")
+//	@Column(name = "title")
 	private String title;
 
 	@NotNull
-	@Column(name = "band")
+//	@Column(name = "band")
 	private String band;
 
 	@NotNull
-	@Column(name = "release")
-	private int year;
+//	@Column(name = "release")
+	private int yearOfRelease;
 
 	@NotNull
-	@Column(name = "details")
+//	@Column(name = "details")
 	private String details;
 
 	@NotNull
-	@Column(name = "photo_url")
+//	@Column(name = "label")
+	private String label;
+
+	@NotNull
+//	@Column(name = "photo_url")
 	private String photoUrl;
 
 	@NotNull
-	@Column(name = "quantity")
-	private int quantity;
-
-	@NotNull
-	@Column(name = "price")
+//	@Column(name = "price")
 	private double price;
 
 	public Album() {
@@ -50,23 +48,19 @@ public class Album {
 	}
 
 	public Album(@NotNull String title, @NotNull String band, @NotNull int year, @NotNull String details,
-			@NotNull String photoUrl, @NotNull int quantity, @NotNull double price) {
+			@NotNull String label, @NotNull String photoUrl, @NotNull double price) {
 		super();
 		this.title = title;
 		this.band = band;
-		this.year = year;
+		this.yearOfRelease = year;
 		this.details = details;
+		this.label = label;
 		this.photoUrl = photoUrl;
-		this.quantity = quantity;
 		this.price = price;
 	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -85,12 +79,12 @@ public class Album {
 		this.band = band;
 	}
 
-	public int getYear() {
-		return year;
+	public int getYearOfRelease() {
+		return yearOfRelease;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setYearOfRelease(int yearOfRelease) {
+		this.yearOfRelease = yearOfRelease;
 	}
 
 	public String getDetails() {
@@ -101,6 +95,14 @@ public class Album {
 		this.details = details;
 	}
 
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
@@ -109,20 +111,18 @@ public class Album {
 		this.photoUrl = photoUrl;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public double getPrice() {
 		return price;
 	}
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Album [id=" + id + ", title=" + title + ", band=" + band + ", year=" + yearOfRelease + ", details=" + details
+				+ ", label=" + label + ", photoUrl=" + photoUrl + ", price=" + price + "]";
 	}
 
 }

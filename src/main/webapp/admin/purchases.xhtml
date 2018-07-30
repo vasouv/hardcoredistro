@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/includes/layout/layout-admin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+	<ui:param name="title" value="All orders" />
+	
+	<ui:define name="content">
+	
+		<p:dataTable var="purchase" value="#{purchasesManager.purchases}">
+			<p:column headerText="ID">#{purchase.id}</p:column>
+			<p:column headerText="Date Placed">#{purchase.datePlaced}</p:column>
+			<p:column headerText="Customer">#{purchase.customer.name}</p:column>
+			<p:column headerText="Status">#{purchase.purchaseStatus}</p:column>
+			<p:column headerText="Albums Bought">#{purchase.orderedAlbums.size()}</p:column>
+		</p:dataTable>
+	
+	</ui:define>
+	
+</ui:composition>

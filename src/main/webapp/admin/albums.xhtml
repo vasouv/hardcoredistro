@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/includes/layout/layout-admin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:param name="title" value="All albums" />
+
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable value="#{storeBean.albums}" var="album">
+				<p:column headerText="Id">#{album.id}</p:column>
+				<p:column headerText="Title">#{album.title}</p:column>
+				<p:column headerText="Band">#{album.band}</p:column>
+				<p:column headerText="Label">#{album.label}</p:column>
+				<p:column headerText="Year">#{album.yearOfRelease}</p:column>
+				<p:column headerText="Price">#{album.price}</p:column>
+				<p:column headerText="Quantity"></p:column>
+
+				<p:column>
+					<p:commandButton value="Edit" action="editalbum.xhtml" icon="fa fa-ellipsis-h">
+						<f:setPropertyActionListener value="#{album}"
+							target="#{editAlbumBean.selectedToEdit}" />
+					</p:commandButton>
+				</p:column>
+				
+				<p:column>
+					<p:commandButton value="Disable" action="#{albumManager.disableAlbum()}" icon="fa fa-ellipsis-h">
+						<f:setPropertyActionListener value="#{album}"
+							target="#{albumManager.selected}" />
+					</p:commandButton>
+				</p:column>				
+
+				<p:column>
+					<p:commandButton value="Remove"
+						action="#{albumManager.removeAlbum()}" ajax="false" icon="fa fa-cart-plus">
+						<f:setPropertyActionListener value="#{album}"
+							target="#{albumManager.selected}" />
+					</p:commandButton>
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

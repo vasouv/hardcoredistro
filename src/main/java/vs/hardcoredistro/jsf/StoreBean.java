@@ -10,8 +10,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import vs.hardcoredistro.services.AlbumService;
 import vs.hardcoredistro.entities.Album;
+import vs.hardcoredistro.services.AlbumService;
+import vs.hardcoredistro.jsf.CartBean;
 
 @Named
 @RequestScoped

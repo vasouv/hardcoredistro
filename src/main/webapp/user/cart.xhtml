@@ -13,15 +13,15 @@
 				<p:column headerText="Id">#{album.id}</p:column>
 				<p:column headerText="Title">#{album.title}</p:column>
 				<p:column headerText="Band">#{album.band}</p:column>
-				<p:column headerText="Year">#{album.year}</p:column>
+				<p:column headerText="Year">#{album.yearOfRelease}</p:column>
 				<p:column headerText="Price">#{album.price}</p:column>
 				<p:column>
 					<p:commandButton value="Remove"
-						actionListener="#{cartBean.remove(album)}" ajax="false"></p:commandButton>
+						actionListener="#{cartBean.remove(album)}" ajax="false" icon="fa fa-remove"></p:commandButton>
 				</p:column>
 				<f:facet name="footer">
         			Total amount : #{cartBean.totalAmount()} <p:spacer width="20" />
-        			<p:commandButton value="Clear Cart" actionListener="#{cartBean.clear()}" ajax="false"></p:commandButton>
+        			<p:commandButton value="Clear Cart" actionListener="#{cartBean.clear()}" ajax="false" icon="fa fa-remove"></p:commandButton>
     			</f:facet>
 			</p:dataTable>
 		</h:form>

@@ -23,7 +23,7 @@ public class RegisterBean {
 	private String country;
 
 	public void register() {
-		Customer reg = new Customer(email, password);
+		Customer reg = new Customer(email, password, name);
 		reg.setName(name);
 		reg.setAddress(address);
 		reg.setCity(city);
