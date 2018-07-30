@@ -16,6 +16,7 @@ import vs.hardcoredistro.entities.Album;
 import vs.hardcoredistro.entities.Customer;
 import vs.hardcoredistro.entities.OrderedAlbum;
 import vs.hardcoredistro.entities.Purchase;
+import vs.hardcoredistro.entities.PurchaseStatus;
 import vs.hardcoredistro.services.AlbumService;
 import vs.hardcoredistro.services.CustomerService;
 import vs.hardcoredistro.services.PurchaseService;
@@ -73,6 +74,8 @@ public class InititalizerBean {
 
         // Purchase for vasouv
         Purchase pVasouv = new Purchase(LocalDate.now(), vasouv, forVasouv);
+        pVasouv.setPurchaseStatus(PurchaseStatus.PENDING);
+        pVasouv.setTotalAmount();
 
         // Ordered albums for john
         OrderedAlbum j1 = new OrderedAlbum(2, firepower);
@@ -85,6 +88,8 @@ public class InititalizerBean {
 
         // Purchase for john
         Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn);
+        pJohn.setPurchaseStatus(PurchaseStatus.PENDING);
+        pJohn.setTotalAmount();
 
         // Persists purchases
         purchaseService.create(pVasouv);

@@ -85,6 +85,18 @@ public class Purchase {
 		this.totalAmount = totalAmount;
 	}
 
+	public void setTotalAmount() {
+		if (orderedAlbums.size() == 0) {
+			setTotalAmount(0);
+		} else {
+			totalAmount = 0.0;
+			for (OrderedAlbum orderedAlbum : orderedAlbums) {
+				totalAmount += orderedAlbum.getAlbum().getPrice() * orderedAlbum.getQuantity();
+			}
+			setTotalAmount(totalAmount);
+		}
+	}
+
 	public PurchaseStatus getPurchaseStatus() {
 		return purchaseStatus;
 	}
