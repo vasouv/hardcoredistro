@@ -22,6 +22,10 @@ public class StockService {
 	public List<Stock> findAll() {
 		return em.createQuery("select s from Stock s").getResultList();
 	}
+	
+	public Stock findByID(Long albumID) {
+		return (Stock) em.createQuery("select s from Stock s where s.album.id=:aid").setParameter("aid", albumID).getSingleResult();
+	}
 
 	public void create(String albumTitle, int stock) {
 		Album found = albumService.findByTitle(albumTitle);
