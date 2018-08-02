@@ -106,6 +106,10 @@ public class InititalizerBean {
 
         // New purchase persistence
         Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain);
+        newVasouv.setPurchaseStatus(PurchaseStatus.SHIPPED);
+        newVasouv.setTotalAmount();
+        newVasouv.setDateShipped(LocalDate.now());
+        
         purchaseService.create(newVasouv);
 
     }

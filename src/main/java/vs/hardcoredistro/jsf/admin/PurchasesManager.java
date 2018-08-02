@@ -24,6 +24,11 @@ public class PurchasesManager {
 	public void init() {
 		purchases = new ArrayList<>(purchaseService.findAll());
 	}
+        
+        public String shipPurchase(Long purchaseID){
+            purchaseService.ship(purchaseID);
+            return "purchases.xhtml";
+        }
 
 	public List<Purchase> getPurchases() {
 		return purchases;
