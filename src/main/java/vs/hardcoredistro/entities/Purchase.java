@@ -19,114 +19,115 @@ import javax.validation.constraints.NotNull;
 //@Table(name = "PURCHASE")
 public class Purchase {
 
-	@Id
+    @Id
 //	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotNull
+    @NotNull
 //	@Column(name = "date_placed")
-	private LocalDate datePlaced;
+    private LocalDate datePlaced;
 
 //	@NotNull
 //	@Column(name = "total_amount")
-	private double totalAmount;
+    private double totalAmount;
 
 //	@NotNull
-	@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
 //	@Column(name = "purchase_status")
-	private PurchaseStatus purchaseStatus;
+    private PurchaseStatus purchaseStatus;
 
 //	@Column(name = "date_shipped")
-	private LocalDate dateShipped;
+    private LocalDate dateShipped;
 
-	@ManyToOne
+    @ManyToOne
 //	@JoinColumn(name = "customer_id")
-	private Customer customer;
+    private Customer customer;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "purchase", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "purchase", fetch = FetchType.EAGER)
 //	@JoinTable(name = "PURCHASE_ALBUM", joinColumns = {
 //			@JoinColumn(name = "purchase_id", referencedColumnName = "id") }, inverseJoinColumns = {
 //					@JoinColumn(name = "album_id", referencedColumnName = "id") })
-	private List<OrderedAlbum> orderedAlbums;
+    private List<OrderedAlbum> orderedAlbums;
 
-	public Purchase() {
-		// TODO Auto-generated constructor stub
-	}
+    public Purchase() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public Purchase(@NotNull LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums) {
-		super();
-		this.datePlaced = datePlaced;
-		this.customer = customer;
-		this.orderedAlbums = albums;
-	}
+    public Purchase(@NotNull LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums) {
+        super();
+        this.datePlaced = datePlaced;
+        this.customer = customer;
+        this.orderedAlbums = albums;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public LocalDate getDatePlaced() {
+        return datePlaced;
+    }
 
-	public LocalDate getDatePlaced() {
-		return datePlaced;
-	}
+    public void setDatePlaced(LocalDate datePlaced) {
+        this.datePlaced = datePlaced;
+    }
 
-	public void setDatePlaced(LocalDate datePlaced) {
-		this.datePlaced = datePlaced;
-	}
+    public double getTotalAmount() {
+        return totalAmount;
+    }
 
-	public double getTotalAmount() {
-		return totalAmount;
-	}
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
+    public void setTotalAmount() {
+        if (orderedAlbums.isEmpty()) {
+            setTotalAmount(0);
+        } else {
+            totalAmount = 0.0;
+            for (OrderedAlbum orderedAlbum : orderedAlbums) {
+                totalAmount += orderedAlbum.getAlbum().getPrice() * orderedAlbum.getQuantity();
+            }
+            setTotalAmount(totalAmount);
+        }
+    }
 
-	public void setTotalAmount() {
-		if (orderedAlbums.size() == 0) {
-			setTotalAmount(0);
-		} else {
-			totalAmount = 0.0;
-			for (OrderedAlbum orderedAlbum : orderedAlbums) {
-				totalAmount += orderedAlbum.getAlbum().getPrice() * orderedAlbum.getQuantity();
-			}
-			setTotalAmount(totalAmount);
-		}
-	}
+    public PurchaseStatus getPurchaseStatus() {
+        return purchaseStatus;
+    }
 
-	public PurchaseStatus getPurchaseStatus() {
-		return purchaseStatus;
-	}
+    public void setPurchaseStatus(PurchaseStatus purchaseStatus) {
+        this.purchaseStatus = purchaseStatus;
+    }
 
-	public void setPurchaseStatus(PurchaseStatus purchaseStatus) {
-		this.purchaseStatus = purchaseStatus;
-	}
+    public LocalDate getDateShipped() {
+        return dateShipped;
+    }
 
-	public LocalDate getDateShipped() {
-		return dateShipped;
-	}
+    public void setDateShipped(LocalDate dateShipped) {
+        this.dateShipped = dateShipped;
+    }
 
-	public void setDateShipped(LocalDate dateShipped) {
-		this.dateShipped = dateShipped;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public List<OrderedAlbum> getOrderedAlbums() {
+        return orderedAlbums;
+    }
 
-	public List<OrderedAlbum> getOrderedAlbums() {
-		return orderedAlbums;
-	}
+    public void setOrderedAlbums(List<OrderedAlbum> albums) {
+        this.orderedAlbums = albums;
+    }
 
-	public void setOrderedAlbums(List<OrderedAlbum> albums) {
-		this.orderedAlbums = albums;
-	}
+    @Override
+    public String toString() {
+        return "Purchase{" + "id=" + id + ", datePlaced=" + datePlaced + ", totalAmount=" + totalAmount + ", purchaseStatus=" + purchaseStatus + ", dateShipped=" + dateShipped + ", customer=" + customer + ", orderedAlbums=" + orderedAlbums + '}';
+    }
 
 }

@@ -29,10 +29,11 @@ public class PurchaseService {
 	}
 
 	public void create(Purchase toPlace) {
-		Customer toBuy = customerService.findByName(toPlace.getCustomer().getName());
-		List<OrderedAlbum> toOrder = new ArrayList<>(toPlace.getOrderedAlbums());
-		Purchase newPurchase = new Purchase(toPlace.getDatePlaced(), toBuy, toOrder);
-		em.persist(newPurchase);
+//		Customer toBuy = customerService.findByName(toPlace.getCustomer().getName());
+//		List<OrderedAlbum> toOrder = new ArrayList<>(toPlace.getOrderedAlbums());
+//		Purchase newPurchase = new Purchase(toPlace.getDatePlaced(), toBuy, toOrder);
+                System.out.println("Before persist: "+toPlace);
+		em.persist(toPlace);
 	}
 
 	public Purchase first() {
