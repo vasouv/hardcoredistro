@@ -17,13 +17,17 @@
                 <p:column headerText="Date Placed">#{purchase.datePlaced}</p:column>
                 <p:column headerText="Total Amount">#{purchase.totalAmount}</p:column>
                 <p:column headerText="Customer">#{purchase.customer.name}</p:column>
-                <p:column headerText="Status">#{purchase.purchaseStatus.toString()}</p:column>
+                <p:column headerText="Status">#{purchase.purchaseStatus}</p:column>
                 <p:column headerText="Albums Bought">#{purchase.orderedAlbums.size()}</p:column>
                 <p:column headerText="Date Shipped">#{empty purchase.dateShipped ? 'NOT SHIPPED' : purchase.dateShipped}</p:column> 
                 <p:column>
                     <p:commandButton value="Details" action="purchasedetails.xhtml" icon="fa fa-ellipsis-h">
                         <f:setPropertyActionListener value="#{purchase}" target="#{purchaseDetailsBean.selected}" />
                     </p:commandButton>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Ship Order" action="#{purchasesManager.shipPurchase(purchase.id)}" ajax="false"
+                                     disabled="#{!empty purchase.dateShipped}"/>
                 </p:column>
             </p:dataTable>
         </h:form>
