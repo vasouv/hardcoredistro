@@ -46,6 +46,8 @@ public class InititalizerBean {
         Album jomsviking = new Album("Jomsviking", "Amon Amarth", 2017, "Viking death metal", "Metal Blade", "none", 17.5);
         Album firepower = new Album("Firepower", "Judas Priest", 2018, "Great comeback", "Capitol", "some url", 19.4);
         Album incorruptible = new Album("Incorruptible", "Iced Earth", 2017, "havent listened much", "Dont know", "there is", 18.3);
+        Album lastStand = new Album("The Last Stand", "Sabaton", 2016, "awesoooommee", "Nuclear Blast", "oeoeoeoe", 15.6);
+        Album prequelle = new Album("Prequelle", "Ghost", 2018, "heavy rock at its best", "metal blade", "there is no url", 19.2);
 
         albumService.create(jomsviking);
         albumService.create(firepower);
@@ -64,6 +66,8 @@ public class InititalizerBean {
         stockService.create(jomsviking.getTitle(), 5);
         stockService.create(firepower.getTitle(), 7);
         stockService.create(incorruptible.getTitle(), 3);
+        stockService.create(lastStand.getTitle(), 1);
+        stockService.create(prequelle.getTitle(), 10);
 
         // Ordered albums for vasouv
         OrderedAlbum v1 = new OrderedAlbum(2, firepower);
