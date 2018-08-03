@@ -38,11 +38,17 @@ public class StockService {
         Stock forFound = new Stock(stock, found);
         em.persist(forFound);
     }
-    
-    public void disableAlbum(Long albumId){
+
+    public void disableAlbum(Long albumId) {
         Stock forFound = findByID(albumId);
         forFound.setStock(0);
         em.merge(forFound);
+    }
+
+    public void updateByID(Long albumId, int quantity) {
+        Stock forAlbum = findByID(albumId);
+        forAlbum.setStock(quantity);
+        em.merge(forAlbum);
     }
 
 }

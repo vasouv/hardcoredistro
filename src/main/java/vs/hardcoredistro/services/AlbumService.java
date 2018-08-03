@@ -39,4 +39,8 @@ public class AlbumService {
         em.remove(toRemove);
     }
 
+    public void update(Album toUpdate) {
+        em.merge(toUpdate);
+    }
+
 }
