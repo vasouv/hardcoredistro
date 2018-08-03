@@ -15,23 +15,22 @@ import vs.hardcoredistro.services.PurchaseService;
 @RequestScoped
 public class PurchasesManager {
 
-	@Inject
-	private PurchaseService purchaseService;
+    @Inject
+    private PurchaseService purchaseService;
 
-	private List<Purchase> purchases;
+    private List<Purchase> purchases;
 
-	@PostConstruct
-	public void init() {
-		purchases = new ArrayList<>(purchaseService.findAll());
-	}
-        
-        public String shipPurchase(Long purchaseID){
-            purchaseService.ship(purchaseID);
-            return "purchases.xhtml";
-        }
+    @PostConstruct
+    public void init() {
+        purchases = new ArrayList<>(purchaseService.findAll());
+    }
 
-	public List<Purchase> getPurchases() {
-		return purchases;
-	}
+    public void shipPurchase(Long purchaseID) {
+        purchaseService.ship(purchaseID);
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchaseService.findAll();
+    }
 
 }

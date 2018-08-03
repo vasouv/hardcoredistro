@@ -13,30 +13,36 @@ import vs.hardcoredistro.entities.Stock;
 @Stateless
 public class StockService {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-	@Inject
-	private AlbumService albumService;
+    @Inject
+    private AlbumService albumService;
 
-	public List<Stock> findAll() {
-		return em.createQuery("select s from Stock s").getResultList();
-	}
-	
-	public Stock findByID(Long albumID) {
-		return (Stock) em.createQuery("select s from Stock s where s.album.id=:aid").setParameter("aid", albumID).getSingleResult();
-	}
+    public List<Stock> findAll() {
+        return em.createQuery("select s from Stock s").getResultList();
+    }
 
-	public void create(String albumTitle, int stock) {
-		Album found = albumService.findByTitle(albumTitle);
-		Stock forFound = new Stock(stock, found);
-		em.persist(forFound);
-	}
+    public Stock findByID(Long albumID) {
+        return (Stock) em.createQuery("select s from Stock s where s.album.id=:aid").setParameter("aid", albumID).getSingleResult();
+    }
 
-	public void create(Long albumID, int stock) {
-		Album found = albumService.findByID(albumID);
-		Stock forFound = new Stock(stock, found);
-		em.persist(forFound);
-	}
+    public void create(String albumTitle, int stock) {
+        Album found = albumService.findByTitle(albumTitle);
+        Stock forFound = new Stock(stock, found);
+        em.persist(forFound);
+    }
+
+    public void create(Long albumID, int stock) {
+        Album found = albumService.findByID(albumID);
+        Stock forFound = new Stock(stock, found);
+        em.persist(forFound);
+    }
+    
+    public void disableAlbum(Long albumId){
+        Stock forFound = findByID(albumId);
+        forFound.setStock(0);
+        em.merge(forFound);
+    }
 
 }
