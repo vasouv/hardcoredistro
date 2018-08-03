@@ -52,6 +52,8 @@ public class InititalizerBean {
         albumService.create(jomsviking);
         albumService.create(firepower);
         albumService.create(incorruptible);
+        albumService.create(lastStand);
+        albumService.create(prequelle);
         
         // Creating and persisting customers
         Customer vasouv = new Customer("vasouv", "1234567", "vasouv");
