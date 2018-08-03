@@ -1,11 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+<ui:composition template="/WEB-INF/includes/layout/layout-admin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<h:body> 
+    <ui:param name="title" value="Edit album"/>
 
-</h:body> 
-</html>
+    <ui:define name="content">
+
+        <h:form>
+
+            <p:panelGrid id="editalbum" columns="3">
+
+                <f:facet name="header">Edit album</f:facet>
+
+                <h:outputLabel for="etitle" value="Title:" />
+                <p:inputText id="etitle" label="Title"
+                             value="#{editAlbumBean.selectedToEdit.title}" required="true" />
+                <p:message for="etitle" display="text" />
+
+                <h:outputLabel for="eband" value="Band:" />
+                <p:inputText id="eband" label="Band" value="#{editAlbumBean.selectedToEdit.band}"
+                             required="true" />
+                <p:message for="eband" display="text" />
+
+                <h:outputLabel for="edesc" value="Description:" />
+                <p:inputTextarea id="edesc" label="Description"
+                                 value="#{editAlbumBean.selectedToEdit.details}" required="true" />
+                <p:message for="edesc" display="text" />
+
+                <h:outputLabel for="elabel" value="Label:" />
+                <p:inputText id="elabel" label="Label"
+                             value="#{editAlbumBean.selectedToEdit.label}" required="true" />
+                <p:message for="elabel" display="text" />
+
+                <h:outputLabel for="eyear" value="Year:" />
+                <p:inputNumber id="eyear" label="Year"
+                               value="#{editAlbumBean.selectedToEdit.yearOfRelease}" required="true" />
+                <p:message for="eyear" display="text" />
+
+                <h:outputLabel for="eprice" value="Price:" />
+                <p:inputNumber id="eprice" label="Price"
+                               value="#{editAlbumBean.selectedToEdit.price}" required="true" />
+                <p:message for="eprice" display="text" />
+
+                <h:outputLabel for="equant" value="Quantity:" />
+                <p:inputNumber id="equant" label="Quantity"
+                               value="#{editAlbumBean.quantity}" required="true" />
+                <p:message for="equant" display="text" />
+
+                <h:outputLabel for="ephoto" value="Photo URL:" />
+                <p:inputText id="ephoto" label="Photo URL"
+                             value="#{editAlbumBean.selectedToEdit.photoUrl}" required="true" />
+                <p:message for="ephoto" display="text" />
+
+            </p:panelGrid>
+            <p:commandButton value="Save"
+                             action="#{editAlbumBean.editAlbum()}" validateClient="true"
+                             update="editalbum" />
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

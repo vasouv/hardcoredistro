@@ -31,7 +31,7 @@
 
                 <p:column>
                     <p:commandButton value="Add to Cart"
-                                     action="#{storeBean.addToCart()}"
+                                     action="#{storeBean.addToCart()}" disabled="#{stockBean.getStock(album.id)==0}"
                                      update=":storeForm:addAlbumGrowl" icon="fa fa-cart-plus">
                         <f:setPropertyActionListener value="#{album}"
                                                      target="#{storeBean.selected}" />

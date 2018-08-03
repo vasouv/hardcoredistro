@@ -13,35 +13,34 @@ import vs.hardcoredistro.entities.Album;
 @Stateless
 public class AlbumService {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-	public List<Album> findAll() {
-		TypedQuery<Album> query = em.createQuery("select a from Album a", Album.class);
-		List<Album> all = query.getResultList();
-		return all;
-	}
-	
-	public Album findByID(Long id) {
-		return em.find(Album.class, id);
-	}
-	
-	public Album findByTitle(String title) {
-		return (Album) em.createQuery("select a from Album a where a.title=:title").setParameter("title", title).getSingleResult();
-	}
-	
-	public void create(Album album) {
-		em.persist(album);
-	}
+    public List<Album> findAll() {
+        TypedQuery<Album> query = em.createQuery("select a from Album a", Album.class);
+        List<Album> all = query.getResultList();
+        return all;
+    }
 
-	public void remove(Album selected) {
-		Album toRemove = em.find(Album.class, selected.getId());
-		em.remove(toRemove);
+    public Album findByID(Long id) {
+        return em.find(Album.class, id);
+    }
 
-	}
+    public Album findByTitle(String title) {
+        return (Album) em.createQuery("select a from Album a where a.title=:title").setParameter("title", title).getSingleResult();
+    }
 
-	public void disable(Album selected) {
-		// TODO: call stock service for album and set quantity to 0
-	}
+    public void create(Album album) {
+        em.persist(album);
+    }
+
+    public void remove(Album selected) {
+        Album toRemove = em.find(Album.class, selected.getId());
+        em.remove(toRemove);
+    }
+
+    public void update(Album toUpdate) {
+        em.merge(toUpdate);
+    }
 
 }
