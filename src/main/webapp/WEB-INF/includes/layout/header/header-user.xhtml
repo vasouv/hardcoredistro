@@ -10,7 +10,7 @@
 			<p:menuitem value="Profile" url="profile.xhtml" icon="fa fa-user" />
 			<p:menuitem value="Store" url="store.xhtml" icon="fa fa-music" />
 			<p:menuitem value="Cart" url="cart.xhtml" icon="fa fa-shopping-cart" />
-			<p:menuitem value="Checkout" url="checkout.xhtml" disabled="#{cartBean.albumsInCart.size()==0}" icon="fa fa-credit-card" />
+                        <p:menuitem value="Checkout" url="checkout.xhtml" disabled="#{cartBean.orderedAlbums.size()==0}" icon="fa fa-credit-card" />
 
 			<f:facet name="options">
 				<p:commandButton type="button" value="Logout" icon="fa fa-power-off" />

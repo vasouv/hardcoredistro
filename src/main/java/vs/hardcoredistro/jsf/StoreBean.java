@@ -18,42 +18,42 @@ import vs.hardcoredistro.jsf.CartBean;
 @RequestScoped
 public class StoreBean {
 
-	@Inject
-	private AlbumService albumService;
-	
-	@Inject
-	private CartBean cart;
+    @Inject
+    private AlbumService albumService;
 
-	private List<Album> albums;
-	
-	private Album selected;
+    @Inject
+    private CartBean cart;
 
-	@PostConstruct
-	public void init() {
-		albums = new ArrayList<>(albumService.findAll());
-	}
-	
-	public void addToCart() {
-		cart.add(selected);
-		showAddedAlbum();
-	}
-	
-	private void showAddedAlbum() {
+    private List<Album> albums;
+
+    private Album selected;
+
+    @PostConstruct
+    public void init() {
+        albums = new ArrayList<>(albumService.findAll());
+    }
+
+    public void addToCart() {
+        cart.add(selected);
+        showAddedAlbum();
+    }
+
+    private void showAddedAlbum() {
         FacesContext context = FacesContext.getCurrentInstance();
-         
+
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Added album", selected.getTitle()));
     }
-	
-	public List<Album> getAlbums() {
-		return albums;
-	}
-	
-	public Album getSelected() {
-		return selected;
-	}
-	
-	public void setSelected(Album selected) {
-		this.selected = selected;
-	}
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public Album getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Album selected) {
+        this.selected = selected;
+    }
 
 }
