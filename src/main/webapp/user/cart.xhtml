@@ -9,25 +9,34 @@
 
     <ui:define name="content">
         <h:form>
+
             <p:dataTable id="cartForm" value="#{cartBean.orderedAlbums}" var="orderedAlbum">
                 <p:column headerText="Id">#{orderedAlbum.album.id}</p:column>
                 <p:column headerText="Title">#{orderedAlbum.album.title}</p:column>
                 <p:column headerText="Band">#{orderedAlbum.album.band}</p:column>
                 <p:column headerText="Year">#{orderedAlbum.album.yearOfRelease}</p:column>
                 <p:column headerText="Price">#{orderedAlbum.album.price}</p:column>
+
                 <p:column headerText="Quantity">
-                    <p:inputNumber value="#{orderedAlbum.quantity}"/>  
+                    <p:inputNumber value="#{orderedAlbum.quantity}">
+                        <f:validateLongRange minimum="1" maximum="3"/>
+                    </p:inputNumber>  
                 </p:column>
+
+                <p:column headerText="In Stock">#{stockBean.getStock(orderedAlbum.album.id)}</p:column>
+
                 <p:column>
-                    <p:commandButton value="Remove" actionListener="#{cartBean.remove(orderedAlbum)}" ajax="false" icon="fa fa-remove"></p:commandButton>
+                    <p:commandButton value="Remove" actionListener="#{cartBean.remove(orderedAlbum)}" ajax="false" icon="fa fa-remove"/>
                 </p:column>
+
                 <f:facet name="footer">
                     Total amount : #{cartBean.totalAmount()} <p:spacer width="20" />
-                    <p:commandButton value="Clear Cart" actionListener="#{cartBean.clear()}" ajax="false" icon="fa fa-remove"></p:commandButton>
-                    <p:spacer width="20" />
-                    <p:commandButton value="Update" update="cartForm"/>
+                    <p:commandButton value="Clear Cart" actionListener="#{cartBean.clear()}" ajax="false" icon="fa fa-remove"/><p:spacer width="20" />
+                    <p:commandButton value="Update" update="cartForm" validateClient="true"/>
                 </f:facet>
+
             </p:dataTable>
+
         </h:form>
 
     </ui:define>

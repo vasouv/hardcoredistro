@@ -13,6 +13,7 @@ import javax.inject.Named;
 import vs.hardcoredistro.entities.Album;
 import vs.hardcoredistro.services.AlbumService;
 import vs.hardcoredistro.jsf.CartBean;
+import vs.hardcoredistro.services.StockService;
 
 @Named
 @RequestScoped
@@ -20,7 +21,7 @@ public class StoreBean {
 
     @Inject
     private AlbumService albumService;
-
+    
     @Inject
     private CartBean cart;
 
