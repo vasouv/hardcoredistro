@@ -15,8 +15,6 @@ import vs.hardcoredistro.entities.OrderedAlbum;
 @SessionScoped
 public class CartBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private List<OrderedAlbum> orderedAlbums;
 
     @PostConstruct

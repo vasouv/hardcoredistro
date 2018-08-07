@@ -11,8 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import vs.hardcoredistro.entities.Album;
-import vs.hardcoredistro.services.AlbumService;
-import vs.hardcoredistro.jsf.CartBean;
+import vs.hardcoredistro.entities.Stock;
 import vs.hardcoredistro.services.StockService;
 
 @Named
@@ -20,18 +19,18 @@ import vs.hardcoredistro.services.StockService;
 public class StoreBean {
 
     @Inject
-    private AlbumService albumService;
-    
+    private StockService stockService;
+
     @Inject
     private CartBean cart;
 
-    private List<Album> albums;
+    private List<Stock> albumsInStock;
 
     private Album selected;
 
     @PostConstruct
     public void init() {
-        albums = new ArrayList<>(albumService.findAll());
+        albumsInStock = new ArrayList<>(stockService.findAll());
     }
 
     public void addToCart() {
@@ -45,8 +44,12 @@ public class StoreBean {
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Added album", selected.getTitle()));
     }
 
-    public List<Album> getAlbums() {
-        return albums;
+    /*
+     * ACCESSOR METHODS
+     */
+    
+    public List<Stock> getAlbumsInStock() {
+        return albumsInStock;
     }
 
     public Album getSelected() {

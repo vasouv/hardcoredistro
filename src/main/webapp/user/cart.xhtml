@@ -19,11 +19,9 @@
 
                 <p:column headerText="Quantity">
                     <p:inputNumber value="#{orderedAlbum.quantity}">
-                        <f:validateLongRange minimum="1" maximum="3"/>
+                        <f:validateLongRange minimum="1" />
                     </p:inputNumber>  
                 </p:column>
-
-                <p:column headerText="In Stock">#{stockBean.getStock(orderedAlbum.album.id)}</p:column>
 
                 <p:column>
                     <p:commandButton value="Remove" actionListener="#{cartBean.remove(orderedAlbum)}" ajax="false" icon="fa fa-remove"/>
