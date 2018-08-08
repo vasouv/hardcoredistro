@@ -54,11 +54,12 @@ public class Purchase {
         // TODO Auto-generated constructor stub
     }
 
-    public Purchase(@NotNull LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums) {
+    public Purchase(@NotNull LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums, PurchaseStatus purchaseStatus) {
         super();
         this.datePlaced = datePlaced;
         this.customer = customer;
         this.orderedAlbums = albums;
+        this.purchaseStatus = purchaseStatus;
     }
 
     public Long getId() {

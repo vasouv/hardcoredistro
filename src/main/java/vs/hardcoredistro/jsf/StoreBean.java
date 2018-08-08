@@ -11,49 +11,53 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import vs.hardcoredistro.entities.Album;
-import vs.hardcoredistro.services.AlbumService;
-import vs.hardcoredistro.jsf.CartBean;
+import vs.hardcoredistro.entities.Stock;
+import vs.hardcoredistro.services.StockService;
 
 @Named
 @RequestScoped
 public class StoreBean {
 
-	@Inject
-	private AlbumService albumService;
-	
-	@Inject
-	private CartBean cart;
+    @Inject
+    private StockService stockService;
 
-	private List<Album> albums;
-	
-	private Album selected;
+    @Inject
+    private CartBean cart;
 
-	@PostConstruct
-	public void init() {
-		albums = new ArrayList<>(albumService.findAll());
-	}
-	
-	public void addToCart() {
-		cart.add(selected);
-		showAddedAlbum();
-	}
-	
-	private void showAddedAlbum() {
+    private List<Stock> albumsInStock;
+
+    private Album selected;
+
+    @PostConstruct
+    public void init() {
+        albumsInStock = new ArrayList<>(stockService.findAll());
+    }
+
+    public void addToCart() {
+        cart.add(selected);
+        showAddedAlbum();
+    }
+
+    private void showAddedAlbum() {
         FacesContext context = FacesContext.getCurrentInstance();
-         
+
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Added album", selected.getTitle()));
     }
-	
-	public List<Album> getAlbums() {
-		return albums;
-	}
-	
-	public Album getSelected() {
-		return selected;
-	}
-	
-	public void setSelected(Album selected) {
-		this.selected = selected;
-	}
+
+    /*
+     * ACCESSOR METHODS
+     */
+    
+    public List<Stock> getAlbumsInStock() {
+        return albumsInStock;
+    }
+
+    public Album getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Album selected) {
+        this.selected = selected;
+    }
 
 }

@@ -21,14 +21,14 @@ public class AlbumManager {
     private Album selected;
 
     // properties for new album
-    private String nTitle;
-    private String nBand;
-    private String nDesc;
-    private String nLabel;
-    private int nYearOfRelease;
-    private double nPrice;
-    private int nQuantity;
-    private String nPhotoURL;
+    private String title;
+    private String band;
+    private String description;
+    private String label;
+    private int yearOfRelease;
+    private double price;
+    private int quantity;
+    private String photoUrl;
 
     public void removeAlbum() {
         albumService.remove(selected);
@@ -39,85 +39,81 @@ public class AlbumManager {
     }
 
     public String createAlbum() {
-        Album newAlbum = new Album(nTitle, nBand, nYearOfRelease, nDesc, nLabel, nPhotoURL, nPrice);
+        Album newAlbum = new Album(title, band, yearOfRelease, description, label, photoUrl, price);
         albumService.create(newAlbum);
-        stockService.create(newAlbum.getTitle(), nQuantity);
+        stockService.create(newAlbum.getTitle(), quantity);
         return "albums.xhtml";
     }
 
-    /**
+    /*
      * ACCESSOR METHODS
      */
     public Album getSelected() {
         return selected;
     }
 
-    public void setSelected(Album selected) {
-        this.selected = selected;
+    public String getTitle() {
+        return title;
     }
 
-    public String getnTitle() {
-        return nTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setnTitle(String nTitle) {
-        this.nTitle = nTitle;
+    public String getBand() {
+        return band;
     }
 
-    public String getnDesc() {
-        return nDesc;
+    public void setBand(String band) {
+        this.band = band;
     }
 
-    public void setnDesc(String nDesc) {
-        this.nDesc = nDesc;
+    public String getDescription() {
+        return description;
     }
 
-    public String getnLabel() {
-        return nLabel;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setnLabel(String nLabel) {
-        this.nLabel = nLabel;
+    public String getLabel() {
+        return label;
     }
 
-    public double getnPrice() {
-        return nPrice;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
-    public void setnPrice(double nPrice) {
-        this.nPrice = nPrice;
+    public int getYearOfRelease() {
+        return yearOfRelease;
     }
 
-    public int getnQuantity() {
-        return nQuantity;
+    public void setYearOfRelease(int yearOfRelease) {
+        this.yearOfRelease = yearOfRelease;
     }
 
-    public void setnQuantity(int nQuantity) {
-        this.nQuantity = nQuantity;
+    public double getPrice() {
+        return price;
     }
 
-    public String getnPhotoURL() {
-        return nPhotoURL;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public void setnPhotoURL(String nPhotoURL) {
-        this.nPhotoURL = nPhotoURL;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public String getnBand() {
-        return nBand;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public void setnBand(String nBand) {
-        this.nBand = nBand;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public int getnYearOfRelease() {
-        return nYearOfRelease;
-    }
-
-    public void setnYearOfRelease(int yearOfRelease) {
-        this.nYearOfRelease = yearOfRelease;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
 }
