@@ -24,6 +24,9 @@ public class PurchaseService {
     @Inject
     private CustomerService customerService;
 
+    @Inject
+    private StockService stockService;
+
     public List<Purchase> findAll() {
         TypedQuery<Purchase> query = em.createQuery("select p from Purchase p", Purchase.class);
         List<Purchase> all = query.getResultList();
@@ -31,11 +34,23 @@ public class PurchaseService {
     }
 
     public void create(Purchase toPlace) {
-//		Customer toBuy = customerService.findByName(toPlace.getCustomer().getName());
-//		List<OrderedAlbum> toOrder = new ArrayList<>(toPlace.getOrderedAlbums());
-//		Purchase newPurchase = new Purchase(toPlace.getDatePlaced(), toBuy, toOrder);
-        System.out.println("Before persist: " + toPlace);
         em.persist(toPlace);
+    }
+
+    public boolean create(List<OrderedAlbum> albumsToOrder, String customerName) {
+
+        boolean purchaseCompleted = false;
+
+        if (stockService.albumListHasWantedQuantity(albumsToOrder)) {
+            stockService.decreaseStockForAlbums(albumsToOrder);
+            Customer customer = customerService.findByName(customerName);
+            Purchase pur = new Purchase(LocalDate.now(), customer, albumsToOrder, PurchaseStatus.PENDING);
+            pur.setTotalAmount();
+            em.persist(pur);
+            purchaseCompleted = true;
+        }
+
+        return purchaseCompleted;
     }
 
     public Purchase first() {
@@ -43,7 +58,8 @@ public class PurchaseService {
     }
 
     public List<Purchase> vasouv() {
-        return em.createQuery("select p from Purchase p where p.customer.name=:cname").setParameter("cname", "vasouv")
+        return em.createQuery("select p from Purchase p where p.customer.name=:cname")
+                .setParameter("cname", "vasouv")
                 .getResultList();
     }
 

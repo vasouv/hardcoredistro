@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import vs.hardcoredistro.entities.Album;
+import vs.hardcoredistro.entities.OrderedAlbum;
 import vs.hardcoredistro.entities.Stock;
 
 @Stateless
@@ -49,6 +50,31 @@ public class StockService {
         Stock forAlbum = findByID(albumId);
         forAlbum.setStock(quantity);
         em.merge(forAlbum);
+    }
+
+    public boolean albumHasWantedQuantity(Long albumId, int wantedQuantity) {
+        Stock forAlbum = findByID(albumId);
+        return wantedQuantity <= forAlbum.getStock();
+    }
+
+    public boolean albumListHasWantedQuantity(List<OrderedAlbum> orderedAlbums) {
+        boolean allAlbumsHaveQuantity = true;
+        for (OrderedAlbum orderedAlbum : orderedAlbums) {
+            Stock forAlbum = findByID(orderedAlbum.getAlbum().getId());
+            if (orderedAlbum.getQuantity() > forAlbum.getStock()) {
+                allAlbumsHaveQuantity = false;
+                break;
+            }
+        }
+        return allAlbumsHaveQuantity;
+    }
+
+    public void decreaseStockForAlbums(List<OrderedAlbum> albumsToOrder) {
+        for (OrderedAlbum orderedAlbum : albumsToOrder) {
+            Stock forAlbum = findByID(orderedAlbum.getAlbum().getId());
+            forAlbum.setStock(forAlbum.getStock() - orderedAlbum.getQuantity());
+            em.merge(forAlbum);
+        }
     }
 
 }

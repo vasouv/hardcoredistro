@@ -9,14 +9,15 @@
 
     <ui:define name="content">
 
-        <h:form>
+        <h:form id="chk">
+            <p:messages id="messages" showDetail="true" closable="true">
+            </p:messages>
             <p:dataTable value="#{checkoutBean.albumsToOrder}" var="albumToOrder">
                 <p:column headerText="Title">#{albumToOrder.album.title}</p:column>
                 <p:column headerText="Quantity">#{albumToOrder.quantity}</p:column>
-                <p:column headerText="Availability">#{albumToOrder.quantity lt stockBean.getStock(albumToOrder.album.id) ? 'AVAILABLE' : 'NOT AVAILABLE'}</p:column>
             </p:dataTable>
 
-            <p:commandButton value="Check Availability" disabled="#{albumToOrder.quantity gt stockBean.getStock(albumToOrder.album.id)}" />
+            <p:commandButton value="Buy" action="#{checkoutBean.buy()}" update="chk" />
         </h:form>
 
     </ui:define>

@@ -79,8 +79,7 @@ public class InititalizerBean {
         forVasouv.add(v2);
 
         // Purchase for vasouv
-        Purchase pVasouv = new Purchase(LocalDate.now(), vasouv, forVasouv);
-        pVasouv.setPurchaseStatus(PurchaseStatus.PENDING);
+        Purchase pVasouv = new Purchase(LocalDate.now(), vasouv, forVasouv, PurchaseStatus.PENDING);
         pVasouv.setTotalAmount();
 
         // Ordered albums for john
@@ -93,8 +92,7 @@ public class InititalizerBean {
         forJohn.add(j3);
 
         // Purchase for john
-        Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn);
-        pJohn.setPurchaseStatus(PurchaseStatus.PENDING);
+        Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn,PurchaseStatus.PENDING);
         pJohn.setTotalAmount();
 
         // Persists purchases
@@ -111,7 +109,7 @@ public class InititalizerBean {
         forVasouvAgain.add(v5);
 
         // New purchase persistence
-        Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain);
+        Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain,PurchaseStatus.PENDING);
         newVasouv.setPurchaseStatus(PurchaseStatus.SHIPPED);
         newVasouv.setTotalAmount();
         newVasouv.setDateShipped(LocalDate.now());
