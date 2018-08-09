@@ -10,7 +10,7 @@ The project is intended to be deployed properly on Jelastic and used by people. 
 Currently the project runs on the Payara H2 embedded database. Nothing needs to be configured, simply deploy the project on Payara 5. Everything is set up by a @Startup bean.
 
 ~~## PostgreSQL
-The database must be running on port 5432. A database with name "postgres" must be present and a schema named "potori". Then add the SQL data in the "sql-test-data" folder.
+The database must be running on port 5432. A database with name "postgres" must be present and a schema named "potori". Then add the SQL data in the "sql-test-data" folder.~~
 
 ~~## Payara - PostgreSQL connectivity
 I've configured Payara to connect with the DB and keep a connection pool, since I'll be using the same DB for auth purposes.
