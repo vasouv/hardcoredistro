@@ -56,9 +56,9 @@ public class InititalizerBean {
         albumService.create(prequelle);
         
         // Creating and persisting customers
-        Customer vasouv = new Customer("vasouv", "1234567", "vasouv");
-        Customer john = new Customer("john", "987654", "john");
-        Customer chris = new Customer("chris", "22222", "chris");
+        Customer vasouv = new Customer("vasouv", "1234567", "vasouv","Themistokleous", "Xanthi", "67133", "Greece");
+        Customer john = new Customer("john", "987654", "john","Kallithea", "Xanthi", "67100", "Greece");
+        Customer chris = new Customer("chris", "22222", "chris","Sardewn", "Xanthi", "67133", "Greece");
 
         customerService.create(vasouv);
         customerService.create(john);

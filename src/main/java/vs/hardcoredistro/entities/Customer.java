@@ -7,121 +7,115 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@Table(name = "CUSTOMER")
 public class Customer {
 
-//	@Column(name = "id")
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotNull
-//	@Column(name = "cemail")
-	private String email;
+    private String email;
 
-	@NotNull
-//	@Column(name = "cpassword")
-	private String password;
+    private String password;
 
-//	@NotNull
-//	@Column(name = "cname")
-	private String name;
+    private String name;
 
-//	@NotNull
-//	@Column(name = "caddress")
-	private String address;
+    private String address;
 
-//	@NotNull
-//	@Column(name = "ccity")
-	private String city;
+    private String city;
 
-//	@NotNull
-//	@Column(name = "czipcode")
-	private String zipcode;
+    private String zipcode;
 
-//	@NotNull
-//	@Column(name = "ccountry")
-	private String country;
+    private String country;
 
-	public Customer() {
+    public Customer() {
 
-	}
+    }
 
-	public Customer(@NotNull String email, @NotNull String password, @NotNull String name) {
-		super();
-		this.email = email;
-		this.password = password;
-                this.name = name;
-	}
+    public Customer(String email, String password, String name) {
+        super();
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Customer(String email, String password, String name, String address, String city, String zipcode, String country) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.country = country;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public String getZipcode() {
-		return zipcode;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
+    public String getZipcode() {
+        return zipcode;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", address="
-				+ address + ", city=" + city + ", zipcode=" + zipcode + ", country=" + country + "]";
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", address="
+                + address + ", city=" + city + ", zipcode=" + zipcode + ", country=" + country + "]";
+    }
 
 }
