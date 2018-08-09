@@ -11,6 +11,11 @@
 
         <p:dataTable var="customer" value="#{customerManager.customers}">
             <p:column headerText="Name">#{customer.name}</p:column>
+            <p:column headerText="Email">#{customer.email}</p:column>
+            <p:column headerText="Address">#{customer.address}</p:column>
+            <p:column headerText="City">#{customer.city}</p:column>
+            <p:column headerText="Zipcode">#{customer.zipcode}</p:column>
+            <p:column headerText="Country">#{customer.country}</p:column>
         </p:dataTable>
 
     </ui:define>
