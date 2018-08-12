@@ -9,20 +9,15 @@
 
     <h:body>
 
-        <h:form id="login">
+        <form method="POST" action="j_security_check">
             <fieldset>
-                <h:outputLabel for="email" value="Email:" />
-                <h:inputText id="email" required="true" value="#{login.email}" />
-
-                <h:outputLabel for="password" value="Password:" />
-                <h:inputSecret id="password" required="true" value="#{login.password}" />
-
+                Username: <input type="text" name="j_username" />
+                Password: <input type="password" name="j_password" />
                 <footer>
-                    <h:commandButton id="submit" action="#{login.submit}" value="Login" />
-                    <h:message for="login" />
+                    <input type="submit" value="Login" />
                 </footer>
             </fieldset>
-        </h:form>
+        </form>
 
     </h:body>
 
