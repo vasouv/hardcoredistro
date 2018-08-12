@@ -16,6 +16,7 @@ import org.glassfish.soteria.identitystores.annotation.EmbeddedIdentityStoreDefi
 @CustomFormAuthenticationMechanismDefinition(
     loginToContinue = @LoginToContinue(
         loginPage = "/login.xhtml",
+        useForwardToLogin = false,
         errorPage = ""
     )
 )
@@ -23,12 +24,12 @@ import org.glassfish.soteria.identitystores.annotation.EmbeddedIdentityStoreDefi
     @Credentials(
         callerName = "admin@example.com",
         password = "secret1",
-        groups = {"VIEW USER PAGES", "VIEW ADMIN PAGES"}
+        groups = {"VIEW_USER_PAGES", "VIEW_ADMIN_PAGES"}
     ),
     @Credentials(
         callerName = "user@example.com",
         password = "secret2",
-        groups = {"VIEW USER PAGES"}
+        groups = {"VIEW_USER_PAGES"}
     )
 })
 public class ApplicationConfig {

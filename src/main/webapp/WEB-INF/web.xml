@@ -38,9 +38,11 @@
         <web-resource-collection>
             <web-resource-name>User pages</web-resource-name>
             <url-pattern>/user/*</url-pattern>
+            <!--<http-method>GET</http-method>-->
+            <!--<http-method>POST</http-method>-->
         </web-resource-collection>
         <auth-constraint>
-            <role-name>VIEW USER PAGES</role-name>
+            <role-name>VIEW_USER_PAGES</role-name>
         </auth-constraint>
     </security-constraint>
     
@@ -48,18 +50,20 @@
         <web-resource-collection>
             <web-resource-name>Admin pages</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
+            <!--<http-method>GET</http-method>-->
+            <!--<http-method>POST</http-method>-->
         </web-resource-collection>
         <auth-constraint>
-            <role-name>VIEW ADMIN PAGES</role-name>
+            <role-name>VIEW_ADMIN_PAGES</role-name>
         </auth-constraint>
     </security-constraint>
     
     <!--Security roles-->
     <security-role>
-        <role-name>VIEW USER PAGES</role-name>
+        <role-name>VIEW_USER_PAGES</role-name>
     </security-role>
     <security-role>
-        <role-name>VIEW ADMIN PAGES</role-name>
+        <role-name>VIEW_ADMIN_PAGES</role-name>
     </security-role>
 
 </web-app>
