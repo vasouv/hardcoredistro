@@ -9,6 +9,9 @@ The project is intended to be deployed properly on Jelastic and used by people. 
 ## H2 database
 Currently the project runs on the Payara H2 embedded database. Nothing needs to be configured, simply deploy the project on Payara 5. Everything is set up by a @Startup bean. PostgreSQL connectivity will be re-added once the project is ready to go live.
 
+## Authentication
+For now, I'm using File Realm authentication. Minimal configuration and is pretty portable. To use, create users in the Payara Admin Console in the groups **admin** and **user**. Will switch to JDBC Realm when the project is out of testing.
+
 ## PostgreSQL
 The database must be running on port 5432. A database with name "postgres" must be present and a schema named "potori". Then add the SQL data in the "sql-test-data" folder.
 
