@@ -59,10 +59,19 @@ public class InititalizerBean {
         Customer vasouv = new Customer("vasouv", "1234567", "vasouv","Themistokleous", "Xanthi", "67133", "Greece");
         Customer john = new Customer("john", "987654", "john","Kallithea", "Xanthi", "67100", "Greece");
         Customer chris = new Customer("chris", "22222", "chris","Sardewn", "Xanthi", "67133", "Greece");
+        
+        //Users from file realm
+        Customer user1 = new Customer("user1", "user1", "user1", "user1", "user1", "user1", "user1");
+        Customer user2 = new Customer("user2", "user2", "user2", "user2", "user2", "user2", "user2");
+        Customer user3 = new Customer("user3", "user3", "user3", "user3", "user3", "user3", "user3");
 
         customerService.create(vasouv);
         customerService.create(john);
         customerService.create(chris);
+        
+        customerService.create(user1);
+        customerService.create(user2);
+        customerService.create(user3);
         
         // Creating and persisting stock for albums
         stockService.create(jomsviking.getTitle(), 5);

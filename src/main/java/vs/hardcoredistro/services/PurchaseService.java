@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import vs.hardcoredistro.auth.LoggedInUser;
 
 import vs.hardcoredistro.entities.Customer;
 import vs.hardcoredistro.entities.OrderedAlbum;
@@ -26,6 +27,9 @@ public class PurchaseService {
 
     @Inject
     private StockService stockService;
+    
+    @Inject
+    private LoggedInUser loggedInUser;
 
     public List<Purchase> findAll() {
         TypedQuery<Purchase> query = em.createQuery("select p from Purchase p", Purchase.class);
@@ -38,7 +42,7 @@ public class PurchaseService {
     }
 
     public boolean create(List<OrderedAlbum> albumsToOrder, String customerName) {
-
+        
         boolean purchaseCompleted = false;
 
         if (stockService.albumListHasWantedQuantity(albumsToOrder)) {
@@ -52,7 +56,7 @@ public class PurchaseService {
 
         return purchaseCompleted;
     }
-
+    
     public Purchase first() {
         return em.find(Purchase.class, 1L);
     }
