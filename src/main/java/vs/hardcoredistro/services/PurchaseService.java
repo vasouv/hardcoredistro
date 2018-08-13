@@ -27,7 +27,7 @@ public class PurchaseService {
 
     @Inject
     private StockService stockService;
-    
+
     @Inject
     private LoggedInUser loggedInUser;
 
@@ -37,12 +37,18 @@ public class PurchaseService {
         return all;
     }
 
+    public List<Purchase> findByCustomerName(String customerName) {
+        return em.createQuery("select p from Purchase p where p.customer.name=:cname")
+            .setParameter("cname", customerName)
+            .getResultList();
+    }
+
     public void create(Purchase toPlace) {
         em.persist(toPlace);
     }
 
     public boolean create(List<OrderedAlbum> albumsToOrder, String customerName) {
-        
+
         boolean purchaseCompleted = false;
 
         if (stockService.albumListHasWantedQuantity(albumsToOrder)) {
@@ -56,15 +62,15 @@ public class PurchaseService {
 
         return purchaseCompleted;
     }
-    
+
     public Purchase first() {
         return em.find(Purchase.class, 1L);
     }
 
     public List<Purchase> vasouv() {
         return em.createQuery("select p from Purchase p where p.customer.name=:cname")
-                .setParameter("cname", "vasouv")
-                .getResultList();
+            .setParameter("cname", "vasouv")
+            .getResultList();
     }
 
     public void ship(Long purchaseID) {

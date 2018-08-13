@@ -9,41 +9,50 @@
 
     <ui:define name="content">
 
-        <h:form>
+        <p:panel header="Update your information" style="margin-bottom: 20px">
 
-            <p:panelGrid columns="2">
+            <h:form>
 
-                <f:facet name="header">Update your information</f:facet>
+                <h:panelGrid columns="2" cellpadding="5">
 
-                <h:outputLabel for="email" value="Email: *" />
-                <p:inputText id="email" value="#{profileBean.currentCustomer.email}" label="Email" />
+                    <p:outputLabel for="email" value="Email: *" />
+                    <p:inputText id="email" value="#{profileBean.currentCustomer.email}" label="Email" />
 
-                <h:outputLabel for="password" value="Password: *" />
-                <p:password id="password" value="#{profileBean.currentCustomer.password}" label="Password" />
+                    <p:outputLabel for="password" value="Password: *" />
+                    <p:password id="password" value="#{profileBean.currentCustomer.password}" label="Password" />
 
-                <h:outputLabel for="name" value="Name: *" />
-                <p:inputText id="name" value="#{profileBean.currentCustomer.name}" label="Name" />
+                    <p:outputLabel for="name" value="Name: *" />
+                    <p:inputText id="name" value="#{profileBean.currentCustomer.name}" label="Name" />
 
-                <h:outputLabel for="address" value="Address: *" />
-                <p:inputText id="address" value="#{profileBean.currentCustomer.address}" label="Address" />
+                    <p:outputLabel for="address" value="Address: *" />
+                    <p:inputText id="address" value="#{profileBean.currentCustomer.address}" label="Address" />
 
-                <h:outputLabel for="city" value="City: *" />
-                <p:inputText id="city" value="#{profileBean.currentCustomer.city}" label="City" />
+                    <p:outputLabel for="city" value="City: *" />
+                    <p:inputText id="city" value="#{profileBean.currentCustomer.city}" label="City" />
 
-                <h:outputLabel for="zipcode" value="Zip Code: *" />
-                <p:inputText id="zipcode" value="#{profileBean.currentCustomer.zipcode}" label="Zip Code" />
+                    <p:outputLabel for="zipcode" value="Zip Code: *" />
+                    <p:inputText id="zipcode" value="#{profileBean.currentCustomer.zipcode}" label="Zip Code" />
 
-                <h:outputLabel for="country" value="Country: *" />
-                <p:inputText id="country" value="#{profileBean.currentCustomer.country}" label="Country" />
+                    <p:outputLabel for="country" value="Country: *" />
+                    <p:inputText id="country" value="#{profileBean.currentCustomer.country}" label="Country" />
 
-                <f:facet name="footer">
-                    <p:commandButton value="Save"
-                                     action="#{profileBean.editInfo}" ajax="false" icon="ui-icon-check" />
-                </f:facet>
+                    <f:facet name="footer">
+                        <p:commandButton value="Save"
+                                         action="#{profileBean.editInfo}" ajax="false" icon="ui-icon-check" />
+                    </f:facet>
 
-            </p:panelGrid>
+                </h:panelGrid>
 
-        </h:form>
+            </h:form>
+
+        </p:panel>
+
+        <p:dataList value="#{profileBean.userPurchases}" var="purchase" style="margin-bottom: 20px">
+            <f:facet name="header">
+                Your purchases
+            </f:facet>
+            #{purchase.toString()}
+        </p:dataList>
 
     </ui:define>
 
