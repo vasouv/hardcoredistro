@@ -23,11 +23,15 @@ public class CustomerService {
 
     public Customer findByName(String name) {
         return (Customer) em.createQuery("select c from Customer c where c.name=:cname").setParameter("cname", name)
-                .getSingleResult();
+            .getSingleResult();
     }
 
     public void create(Customer c) {
         em.persist(c);
+    }
+
+    public void update(Customer c) {
+        em.merge(c);
     }
 
 }
