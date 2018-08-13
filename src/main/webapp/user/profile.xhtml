@@ -47,12 +47,19 @@
 
         </p:panel>
 
-        <p:dataList value="#{profileBean.userPurchases}" var="purchase" style="margin-bottom: 20px">
-            <f:facet name="header">
-                Your purchases
-            </f:facet>
-            #{purchase.toString()}
-        </p:dataList>
+        <p:dataTable var="purchase" value="#{profileBean.userPurchases}">
+            <p:column headerText="ID">#{purchase.id}</p:column>
+            <p:column headerText="Date Placed">#{purchase.datePlaced}</p:column>
+            <p:column headerText="Total Amount">#{purchase.totalAmount}</p:column>
+            <p:column headerText="Status">#{purchase.purchaseStatus}</p:column>
+            <p:column headerText="Albums Bought">#{purchase.orderedAlbums.size()}</p:column>
+            <p:column headerText="Date Shipped">#{empty purchase.dateShipped ? 'NOT SHIPPED' : purchase.dateShipped}</p:column>
+            <p:column>
+                <p:commandButton value="Details" action="purchase-details.xhtml" icon="fa fa-ellipsis-h">
+                    <f:setPropertyActionListener value="#{purchase}" target="#{userPurchaseDetails.selected}" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
 
     </ui:define>
 
