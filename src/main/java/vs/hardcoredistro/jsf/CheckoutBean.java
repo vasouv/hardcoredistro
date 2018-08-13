@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import vs.hardcoredistro.auth.LoggedInUser;
 import vs.hardcoredistro.entities.OrderedAlbum;
 import vs.hardcoredistro.services.PurchaseService;
 import vs.hardcoredistro.services.StockService;
@@ -29,6 +30,9 @@ public class CheckoutBean {
     @Inject
     private PurchaseService purchaseService;
 
+    @Inject
+    private LoggedInUser loggedInUser;
+
     private List<OrderedAlbum> albumsToOrder;
 
     @PostConstruct
@@ -37,15 +41,15 @@ public class CheckoutBean {
     }
 
     public String buy() {
-        boolean purchaseCompleted = purchaseService.create(albumsToOrder, "vasouv");
+        boolean purchaseCompleted = purchaseService.create(albumsToOrder, loggedInUser.getLoggedInUser());
         if (purchaseCompleted) {
             return "checkout-complete.xhtml";
         }
         showMessage();
         return "checkout.xhtml";
     }
-    
-    private void showMessage(){
+
+    private void showMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Some albums were not in availability. Please check quantity"));
     }
