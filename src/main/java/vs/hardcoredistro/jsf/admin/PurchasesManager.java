@@ -33,4 +33,8 @@ public class PurchasesManager {
         return purchaseService.findAll();
     }
 
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
 }

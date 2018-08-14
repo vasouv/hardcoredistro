@@ -12,7 +12,7 @@
         <p:fieldset legend="#{albumDetailsBean.albumDetails.title}"
                     style="margin-bottom:20px">
             <h:panelGrid columns="2" cellpadding="5">
-                <p:graphicImage value="http://placeskull.com/170/170" />
+                <p:graphicImage value="#{albumDetailsBean.albumDetails.photoUrl}" width="350" height="350" />
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Band:" />
                     <h:outputText value="#{albumDetailsBean.albumDetails.band}" />

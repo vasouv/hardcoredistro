@@ -52,6 +52,10 @@ public class AlbumManager {
         return selected;
     }
 
+    public void setSelected(Album selected) {
+        this.selected = selected;
+    }
+
     public String getTitle() {
         return title;
     }
