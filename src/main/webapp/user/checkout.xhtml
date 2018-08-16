@@ -22,7 +22,7 @@
                 src="https://checkout.stripe.com/checkout.js"
                 class="stripe-button"
                 data-key="#{checkoutBean.apiKey}"
-                data-amount="#{checkoutBean.totalAmount}"
+                data-amount="#{checkoutBean.totalAmount * 100}"
                 data-name="Hardcore Distro"
                 data-description="Total charge for your purchase">
             </script>
