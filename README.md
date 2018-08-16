@@ -9,6 +9,9 @@ The project is intended to be deployed properly on Jelastic and used by people. 
 ## H2 database
 Currently the project runs on the Payara H2 embedded database. Nothing needs to be configured, simply deploy the project on Payara 5. Everything is set up by a @Startup bean. PostgreSQL connectivity will be re-added once the project is ready to go live.
 
+## Stripe API keys
+In the **microprofile-config.properties** file, put your Stripe API keys for the project to work.
+
 ## Authentication
 For now, I'm using File Realm authentication. Minimal configuration and is pretty portable. To use, create users in the Payara Admin Console in the groups **admin** and **user**. Will switch to JDBC Realm when the project is out of testing.
 
