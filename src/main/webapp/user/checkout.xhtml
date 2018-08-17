@@ -17,7 +17,6 @@
                 <p:column headerText="Quantity">#{albumToOrder.quantity}</p:column>
             </p:dataTable>
 
-            <p:commandButton value="Buy" action="#{checkoutBean.buy()}" update="chk" />
             <script
                 src="https://checkout.stripe.com/checkout.js"
                 class="stripe-button"

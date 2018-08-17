@@ -77,4 +77,12 @@ public class StockService {
         }
     }
 
+    public void increaseStockForAlbums(List<OrderedAlbum> albumsToOrder) {
+        for (OrderedAlbum orderedAlbum : albumsToOrder) {
+            Stock forAlbum = findByID(orderedAlbum.getAlbum().getId());
+            forAlbum.setStock(forAlbum.getStock() + orderedAlbum.getQuantity());
+            em.merge(forAlbum);
+        }
+    }
+
 }
