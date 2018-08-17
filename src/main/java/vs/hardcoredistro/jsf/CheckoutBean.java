@@ -63,33 +63,35 @@ public class CheckoutBean {
     public void init() {
         albumsToOrder = new ArrayList<>(cartBean.getOrderedAlbums());
 
-        // If the bean is created and has the stripeToken from the callback, make the purchase
         if (stripeToken != null && !stripeToken.isEmpty()) {
             createCharge();
         }
     }
 
-    public String buy() {
-        boolean purchaseCompleted = purchaseService.create(albumsToOrder, loggedInUser.getLoggedInUser());
-        if (purchaseCompleted) {
-            return "checkout-complete.xhtml";
-        }
-        showMessage();
-        return "checkout.xhtml";
-    }
-
     private void createCharge() {
         try {
+            reserveAlbums();
             Charge charge = paymentService.charge(stripeToken, getTotal(), "EUR");
             if (charge != null) {
+                purchaseService.create(albumsToOrder, loggedInUser.getLoggedInUser());
                 Faces.redirect("user/checkout-complete.xhtml");
             } else {
+                revertAlbums();
                 Faces.redirect("user/checkout-failure.xhtml");
             }
         } catch (StripeException ex) {
+            revertAlbums();
             Faces.redirect("user/checkout-failure.xhtml");
             ex.printStackTrace();
         }
+    }
+
+    private void reserveAlbums() {
+        stockService.decreaseStockForAlbums(albumsToOrder);
+    }
+
+    private void revertAlbums() {
+        stockService.increaseStockForAlbums(albumsToOrder);
     }
 
     private void showMessage() {
@@ -108,11 +110,10 @@ public class CheckoutBean {
     /*
     * 1. Rounding up to zero decimals to create integer
     * 2. Multiply *100 so we don't charge cents instead of EUR
-    */
+     */
     public BigDecimal getTotal() {
         BigDecimal forStripe = new BigDecimal(getTotalAmount());
         forStripe = forStripe.setScale(0, BigDecimal.ROUND_UP);
-        System.out.println("BigDecimal price: " + forStripe.toString());
         return forStripe.multiply(new BigDecimal("100"));
     }
 

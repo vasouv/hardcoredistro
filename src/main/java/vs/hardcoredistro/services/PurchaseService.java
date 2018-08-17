@@ -1,7 +1,6 @@
 package vs.hardcoredistro.services;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,7 +8,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import vs.hardcoredistro.auth.LoggedInUser;
 
 import vs.hardcoredistro.entities.Customer;
 import vs.hardcoredistro.entities.OrderedAlbum;
@@ -24,12 +22,6 @@ public class PurchaseService {
 
     @Inject
     private CustomerService customerService;
-
-    @Inject
-    private StockService stockService;
-
-    @Inject
-    private LoggedInUser loggedInUser;
 
     public List<Purchase> findAll() {
         TypedQuery<Purchase> query = em.createQuery("select p from Purchase p", Purchase.class);
@@ -47,30 +39,11 @@ public class PurchaseService {
         em.persist(toPlace);
     }
 
-    public boolean create(List<OrderedAlbum> albumsToOrder, String customerName) {
-
-        boolean purchaseCompleted = false;
-
-        if (stockService.albumListHasWantedQuantity(albumsToOrder)) {
-            stockService.decreaseStockForAlbums(albumsToOrder);
-            Customer customer = customerService.findByName(customerName);
-            Purchase pur = new Purchase(LocalDate.now(), customer, albumsToOrder, PurchaseStatus.PENDING);
-            pur.setTotalAmount();
-            em.persist(pur);
-            purchaseCompleted = true;
-        }
-
-        return purchaseCompleted;
-    }
-
-    public Purchase first() {
-        return em.find(Purchase.class, 1L);
-    }
-
-    public List<Purchase> vasouv() {
-        return em.createQuery("select p from Purchase p where p.customer.name=:cname")
-            .setParameter("cname", "vasouv")
-            .getResultList();
+    public void create(List<OrderedAlbum> albumsToOrder, String customerName) {
+        Customer customer = customerService.findByName(customerName);
+        Purchase pur = new Purchase(LocalDate.now(), customer, albumsToOrder, PurchaseStatus.PENDING);
+        pur.setTotalAmount();
+        em.persist(pur);
     }
 
     public void ship(Long purchaseID) {
