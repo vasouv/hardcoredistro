@@ -23,6 +23,9 @@ public class PurchaseService {
     @Inject
     private CustomerService customerService;
 
+    @Inject
+    private StockService stockService;
+
     public List<Purchase> findAll() {
         TypedQuery<Purchase> query = em.createQuery("select p from Purchase p", Purchase.class);
         List<Purchase> all = query.getResultList();
@@ -37,6 +40,13 @@ public class PurchaseService {
 
     public void create(Purchase toPlace) {
         em.persist(toPlace);
+    }
+
+    public void cancel(Long purchaseID) {
+        Purchase toCancel = em.find(Purchase.class, purchaseID);
+        stockService.increaseStockForAlbums(toCancel.getOrderedAlbums());
+        toCancel.setPurchaseStatus(PurchaseStatus.CANCELLED);
+        em.merge(toCancel);
     }
 
     public void create(List<OrderedAlbum> albumsToOrder, String customerName) {
