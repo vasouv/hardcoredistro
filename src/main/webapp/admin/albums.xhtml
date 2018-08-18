@@ -31,7 +31,7 @@
                 </p:column>				
 
                 <p:column>
-                    <p:commandButton value="Remove" action="#{albumManager.removeAlbum()}" disabled="true" ajax="false" icon="fa fa-cart-plus">
+                    <p:commandButton value="Remove" action="#{albumManager.removeAlbum()}" ajax="false" icon="fa fa-cart-plus">
                         <f:setPropertyActionListener value="#{albumInStock.album}" target="#{albumManager.selected}" />
                     </p:commandButton>
                 </p:column>

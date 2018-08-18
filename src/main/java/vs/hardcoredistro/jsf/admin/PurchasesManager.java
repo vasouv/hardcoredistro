@@ -20,6 +20,8 @@ public class PurchasesManager {
 
     private List<Purchase> purchases;
 
+    private Purchase selected;
+
     @PostConstruct
     public void init() {
         purchases = new ArrayList<>(purchaseService.findAll());
@@ -29,12 +31,26 @@ public class PurchasesManager {
         purchaseService.ship(purchaseID);
     }
 
+    public void cancelPurchase() {
+        purchaseService.cancel(selected.getId());
+    }
+
+    // ACCESSOR METHODS
+    
     public List<Purchase> getPurchases() {
         return purchaseService.findAll();
     }
 
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;
+    }
+
+    public Purchase getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Purchase selected) {
+        this.selected = selected;
     }
 
 }

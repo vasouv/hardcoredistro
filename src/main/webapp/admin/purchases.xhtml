@@ -29,6 +29,11 @@
                     <p:commandButton value="Ship Order" action="#{purchasesManager.shipPurchase(purchase.id)}" ajax="false"
                                      disabled="#{!empty purchase.dateShipped}"/>
                 </p:column>
+                <p:column>
+                    <p:commandButton value="CANCEL" action="#{purchasesManager.cancelPurchase}" ajax="false" disabled="#{purchase.purchaseStatus=='CANCELLED'}">
+                        <f:setPropertyActionListener value="#{purchase}" target="#{purchasesManager.selected}"/>
+                    </p:commandButton>
+                </p:column>
             </p:dataTable>
         </h:form>
 
