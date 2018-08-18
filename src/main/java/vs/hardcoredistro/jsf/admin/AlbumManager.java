@@ -3,6 +3,7 @@ package vs.hardcoredistro.jsf.admin;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.omnifaces.util.Faces;
 
 import vs.hardcoredistro.entities.Album;
 import vs.hardcoredistro.services.AlbumService;
@@ -31,11 +32,14 @@ public class AlbumManager {
     private String photoUrl;
 
     public void removeAlbum() {
+        stockService.removeByID(selected.getId());
         albumService.remove(selected);
+        Faces.redirect("admin/albums.xhtml");
     }
 
     public void disableAlbum() {
         stockService.disableAlbum(selected.getId());
+        Faces.redirect("admin/albums.xhtml");
     }
 
     public String createAlbum() {

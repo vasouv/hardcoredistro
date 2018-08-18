@@ -51,6 +51,12 @@ public class StockService {
         forAlbum.setStock(quantity);
         em.merge(forAlbum);
     }
+    
+    public void removeByID(Long albumID) {
+        Stock forAlbum = findByID(albumID);
+        em.remove(forAlbum);
+    }
+    
 
     public boolean albumHasWantedQuantity(Long albumId, int wantedQuantity) {
         Stock forAlbum = findByID(albumId);
