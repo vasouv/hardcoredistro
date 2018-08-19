@@ -9,48 +9,48 @@ import javax.persistence.OneToOne;
 @Entity
 public class Stock {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private int stock;
+    private int stock;
 
-	@OneToOne
-	private Album album;
+    @OneToOne
+    private Album album;
 
-	public Stock() {
-		// TODO Auto-generated constructor stub
-	}
+    public Stock() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public Stock(int stock, Album album) {
-		super();
-		this.stock = stock;
-		this.album = album;
-	}
+    public Stock(int stock, Album album) {
+        super();
+        this.stock = stock;
+        this.album = album;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public int getStock() {
-		return stock;
-	}
+    public int getStock() {
+        return stock;
+    }
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
-	public Album getAlbum() {
-		return album;
-	}
+    public Album getAlbum() {
+        return album;
+    }
 
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
-	@Override
-	public String toString() {
-		return "Stock [id=" + id + ", stock=" + stock + ", album=" + album + "]";
-	}
+    @Override
+    public String toString() {
+        return "Stock [id=" + id + ", stock=" + stock + ", album=" + album + "]";
+    }
 
 }

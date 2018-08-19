@@ -9,61 +9,61 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderedAlbum {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private int quantity;
+    private int quantity;
 
-	@ManyToOne
-	private Album album;
+    @ManyToOne
+    private Album album;
 
-	@ManyToOne
-	private Purchase purchase;
+    @ManyToOne
+    private Purchase purchase;
 
-	public OrderedAlbum() {
-		// TODO Auto-generated constructor stub
-	}
+    public OrderedAlbum() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public OrderedAlbum(int quantity, Album album, Purchase purchase) {
-		super();
-		this.quantity = quantity;
-		this.album = album;
-		this.purchase = purchase;
-	}
+    public OrderedAlbum(int quantity, Album album, Purchase purchase) {
+        super();
+        this.quantity = quantity;
+        this.album = album;
+        this.purchase = purchase;
+    }
 
-	public OrderedAlbum(int quantity, Album album) {
-		super();
-		this.quantity = quantity;
-		this.album = album;
-	}
+    public OrderedAlbum(int quantity, Album album) {
+        super();
+        this.quantity = quantity;
+        this.album = album;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public Album getAlbum() {
-		return album;
-	}
+    public Album getAlbum() {
+        return album;
+    }
 
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
-	public Purchase getPurchase() {
-		return purchase;
-	}
+    public Purchase getPurchase() {
+        return purchase;
+    }
 
-	public void setPurchase(Purchase purchase) {
-		this.purchase = purchase;
-	}
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
 }
