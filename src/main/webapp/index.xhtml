@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Hello World</title>
-</h:head>
+    <h:head>
+        <title>Hardcore Distro</title>
+    </h:head>
 
-<h:body>
-	<h1>Hello World</h1>
-        <h:link outcome="/user/store.xhtml">Store</h:link><br/>
-        <h:link outcome="/admin/dashboard.xhtml">Admin Dashboard</h:link>
-<!--	<h:button outcome="/user/store.xhtml" value="Store"></h:button>
-	<h:button outcome="/admin/dashboard.xhtml" value="Admin Dashboard"></h:button>
-	<h:button outcome="/register.xhtml" value="New Account"></h:button>-->
-</h:body>
+    <h:body>
+        <p:link outcome="/admin/dashboard.xhtml">Admin</p:link><br/><br/>
+        <p:link outcome="/user/store.xhtml">Store</p:link><br/>
+    </h:body>
 
 </html>
