@@ -47,7 +47,6 @@ public class StoreBean {
     /*
      * ACCESSOR METHODS
      */
-    
     public List<Stock> getAlbumsInStock() {
         return albumsInStock;
     }

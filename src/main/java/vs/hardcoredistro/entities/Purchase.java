@@ -16,45 +16,32 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@Table(name = "PURCHASE")
 public class Purchase {
 
     @Id
-//	@Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-//	@Column(name = "date_placed")
     private LocalDate datePlaced;
 
-//	@NotNull
-//	@Column(name = "total_amount")
     private double totalAmount;
 
-//	@NotNull
     @Enumerated(EnumType.STRING)
-//	@Column(name = "purchase_status")
     private PurchaseStatus purchaseStatus;
 
-//	@Column(name = "date_shipped")
     private LocalDate dateShipped;
 
     @ManyToOne
-//	@JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "purchase", fetch = FetchType.EAGER)
-//	@JoinTable(name = "PURCHASE_ALBUM", joinColumns = {
-//			@JoinColumn(name = "purchase_id", referencedColumnName = "id") }, inverseJoinColumns = {
-//					@JoinColumn(name = "album_id", referencedColumnName = "id") })
     private List<OrderedAlbum> orderedAlbums;
 
     public Purchase() {
         // TODO Auto-generated constructor stub
     }
 
-    public Purchase(@NotNull LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums, PurchaseStatus purchaseStatus) {
+    public Purchase(LocalDate datePlaced, Customer customer, List<OrderedAlbum> albums, PurchaseStatus purchaseStatus) {
         super();
         this.datePlaced = datePlaced;
         this.customer = customer;
