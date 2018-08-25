@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Purchase {
@@ -61,7 +61,7 @@ public class Purchase {
     public void setDatePlaced(LocalDate datePlaced) {
         this.datePlaced = datePlaced;
     }
-
+    
     public BigDecimal getTotalAmount() {
         return totalAmount;
     }
@@ -70,7 +70,8 @@ public class Purchase {
         this.totalAmount = totalAmount;
     }
 
-    public void setTotalAmount() {
+    @PrePersist
+    private void setTotalAmount() {
         if (orderedAlbums.isEmpty()) {
             setTotalAmount(new BigDecimal("0.00"));
         } else {
