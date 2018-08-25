@@ -1,5 +1,6 @@
 package vs.hardcoredistro.entities;
 
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,14 +25,14 @@ public class Album {
 
     private String photoUrl;
 
-    private double price;
+    private BigDecimal price;
 
     public Album() {
 
     }
 
     public Album(String title, String band, int year, String details,
-        String label, String photoUrl, double price) {
+        String label, String photoUrl, BigDecimal price) {
         super();
         this.title = title;
         this.band = band;
@@ -94,11 +95,11 @@ public class Album {
         this.photoUrl = photoUrl;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

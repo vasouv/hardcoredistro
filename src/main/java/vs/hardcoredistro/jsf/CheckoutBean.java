@@ -99,10 +99,11 @@ public class CheckoutBean {
         context.addMessage(null, new FacesMessage("Some albums were not in availability. Please check quantity"));
     }
 
-    public double getTotalAmount() {
-        double total = 0.0;
+    public BigDecimal getTotalAmount() {
+        BigDecimal total = new BigDecimal("0.00");
         for (OrderedAlbum orderedAlbum : albumsToOrder) {
-            total += orderedAlbum.getQuantity() * orderedAlbum.getAlbum().getPrice();
+            BigDecimal orderedAlbumTotal = orderedAlbum.getAlbum().getPrice().multiply(new BigDecimal(orderedAlbum.getQuantity()));
+            total = total.add(orderedAlbumTotal);
         }
         return total;
     }
@@ -112,7 +113,7 @@ public class CheckoutBean {
     * 2. Multiply *100 so we don't charge cents instead of EUR
      */
     public BigDecimal getTotal() {
-        BigDecimal forStripe = new BigDecimal(getTotalAmount());
+        BigDecimal forStripe = getTotalAmount();
         forStripe = forStripe.setScale(0, BigDecimal.ROUND_UP);
         return forStripe.multiply(new BigDecimal("100"));
     }

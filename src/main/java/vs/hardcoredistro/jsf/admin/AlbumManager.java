@@ -1,5 +1,6 @@
 package vs.hardcoredistro.jsf.admin;
 
+import java.math.BigDecimal;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -27,7 +28,7 @@ public class AlbumManager {
     private String description;
     private String label;
     private int yearOfRelease;
-    private double price;
+    private BigDecimal price;
     private int quantity;
     private String photoUrl;
 
@@ -100,11 +101,11 @@ public class AlbumManager {
         this.yearOfRelease = yearOfRelease;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
