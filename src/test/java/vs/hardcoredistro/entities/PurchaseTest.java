@@ -48,7 +48,6 @@ public class PurchaseTest {
     }
 
     //Now I need to actually mock my services
-    
     @Test
     @Ignore
     public void purchaseTotalAmountIs0WithEmptyOrderedAlbums() {

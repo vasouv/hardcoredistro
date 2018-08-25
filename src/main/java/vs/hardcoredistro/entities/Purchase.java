@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Purchase {
@@ -62,7 +61,7 @@ public class Purchase {
     public void setDatePlaced(LocalDate datePlaced) {
         this.datePlaced = datePlaced;
     }
-
+    
     public BigDecimal getTotalAmount() {
         return totalAmount;
     }

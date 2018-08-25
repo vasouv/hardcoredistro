@@ -53,12 +53,12 @@ public class InititalizerBean {
         albumService.create(incorruptible);
         albumService.create(lastStand);
         albumService.create(prequelle);
-        
+
         // Creating and persisting customers
-        Customer vasouv = new Customer("vasouv", "1234567", "vasouv","Themistokleous", "Xanthi", "67133", "Greece");
-        Customer john = new Customer("john", "987654", "john","Kallithea", "Xanthi", "67100", "Greece");
-        Customer chris = new Customer("chris", "22222", "chris","Sardewn", "Xanthi", "67133", "Greece");
-        
+        Customer vasouv = new Customer("vasouv", "1234567", "vasouv", "Themistokleous", "Xanthi", "67133", "Greece");
+        Customer john = new Customer("john", "987654", "john", "Kallithea", "Xanthi", "67100", "Greece");
+        Customer chris = new Customer("chris", "22222", "chris", "Sardewn", "Xanthi", "67133", "Greece");
+
         //Users from file realm
         Customer user1 = new Customer("user1", "user1", "user1", "user1", "user1", "user1", "user1");
         Customer user2 = new Customer("user2", "user2", "user2", "user2", "user2", "user2", "user2");
@@ -67,11 +67,11 @@ public class InititalizerBean {
         customerService.create(vasouv);
         customerService.create(john);
         customerService.create(chris);
-        
+
         customerService.create(user1);
         customerService.create(user2);
         customerService.create(user3);
-        
+
         // Creating and persisting stock for albums
         stockService.create(jomsviking.getTitle(), 5);
         stockService.create(firepower.getTitle(), 7);
@@ -99,7 +99,7 @@ public class InititalizerBean {
         forJohn.add(j3);
 
         // Purchase for john
-        Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn,PurchaseStatus.PENDING);
+        Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn, PurchaseStatus.PENDING);
 
         // Persists purchases
         purchaseService.create(pVasouv);
@@ -115,10 +115,10 @@ public class InititalizerBean {
         forVasouvAgain.add(v5);
 
         // New purchase persistence
-        Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain,PurchaseStatus.PENDING);
+        Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain, PurchaseStatus.PENDING);
         newVasouv.setPurchaseStatus(PurchaseStatus.SHIPPED);
         newVasouv.setDateShipped(LocalDate.now());
-        
+
         purchaseService.create(newVasouv);
 
     }
