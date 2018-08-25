@@ -1,5 +1,6 @@
 package vs.hardcoredistro.startup;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +44,11 @@ public class InititalizerBean {
     public void init() {
 
         // Creating and persisting albums
-        Album jomsviking = new Album("Jomsviking", "Amon Amarth", 2017, "Viking death metal", "Metal Blade", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", 17.5);
-        Album firepower = new Album("Firepower", "Judas Priest", 2018, "Great comeback", "Capitol", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", 19.4);
-        Album incorruptible = new Album("Incorruptible", "Iced Earth", 2017, "havent listened much", "Dont know", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", 18.3);
-        Album lastStand = new Album("The Last Stand", "Sabaton", 2016, "awesoooommee", "Nuclear Blast", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", 15.6);
-        Album prequelle = new Album("Prequelle", "Ghost", 2018, "heavy rock at its best", "metal blade", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", 19.2);
+        Album jomsviking = new Album("Jomsviking", "Amon Amarth", 2017, "Viking death metal", "Metal Blade", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", new BigDecimal("17.00"));
+        Album firepower = new Album("Firepower", "Judas Priest", 2018, "Great comeback", "Capitol", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", new BigDecimal("19.00"));
+        Album incorruptible = new Album("Incorruptible", "Iced Earth", 2017, "havent listened much", "Dont know", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", new BigDecimal("18.00"));
+        Album lastStand = new Album("The Last Stand", "Sabaton", 2016, "awesoooommee", "Nuclear Blast", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", new BigDecimal("16.00"));
+        Album prequelle = new Album("Prequelle", "Ghost", 2018, "heavy rock at its best", "metal blade", "http://www.lasertimepodcast.com/wp-content/uploads/2016/02/iron-maiden-eddie-wallpaper-.jpg", new BigDecimal("19.00"));
 
         albumService.create(jomsviking);
         albumService.create(firepower);

@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import vs.hardcoredistro.entities.Album;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import vs.hardcoredistro.entities.OrderedAlbum;
 
 @Named
@@ -30,26 +31,26 @@ public class CartBean implements Serializable {
     public void clear() {
         orderedAlbums.clear();
     }
-    
+
     public void remove(OrderedAlbum oa) {
         orderedAlbums.remove(oa);
     }
-    
-    public double totalAmount() {
+
+    public BigDecimal totalAmount() {
         if (orderedAlbums.isEmpty()) {
-            return 0;
+            return new BigDecimal("0.00");
         }
-        double total = 0;
-        for (OrderedAlbum album : orderedAlbums) {
-            total += album.getAlbum().getPrice() * album.getQuantity();
+        BigDecimal total = new BigDecimal("0.00");
+        for (OrderedAlbum orderedAlbum : orderedAlbums) {
+            BigDecimal orderedAlbumTotal = orderedAlbum.getAlbum().getPrice().multiply(new BigDecimal(orderedAlbum.getQuantity()));
+            total = total.add(orderedAlbumTotal);
         }
         return total;
     }
-    
+
     /*
     * ACCESSOR METHODS
-    */
-
+     */
     public List<OrderedAlbum> getOrderedAlbums() {
         return orderedAlbums;
     }

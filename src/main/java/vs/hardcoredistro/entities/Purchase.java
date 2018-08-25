@@ -1,5 +1,6 @@
 package vs.hardcoredistro.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Purchase {
 
     private LocalDate datePlaced;
 
-    private double totalAmount;
+    private BigDecimal totalAmount;
 
     @Enumerated(EnumType.STRING)
     private PurchaseStatus purchaseStatus;
@@ -61,21 +62,22 @@ public class Purchase {
         this.datePlaced = datePlaced;
     }
 
-    public double getTotalAmount() {
+    public BigDecimal getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
     }
 
     public void setTotalAmount() {
         if (orderedAlbums.isEmpty()) {
-            setTotalAmount(0);
+            setTotalAmount(new BigDecimal("0.00"));
         } else {
-            totalAmount = 0.0;
+            BigDecimal totalAmount = new BigDecimal("0.00");
             for (OrderedAlbum orderedAlbum : orderedAlbums) {
-                totalAmount += orderedAlbum.getAlbum().getPrice() * orderedAlbum.getQuantity();
+                BigDecimal total = orderedAlbum.getAlbum().getPrice().multiply(new BigDecimal(orderedAlbum.getQuantity()));
+                totalAmount = totalAmount.add(total);
             }
             setTotalAmount(totalAmount);
         }
