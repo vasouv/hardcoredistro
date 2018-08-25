@@ -6,6 +6,8 @@ Users can see the albums along with the available stock. They can add albums to 
 
 The admin can add new albums and edit existing ones. They can see all purchases and mark them as shipped or cancel them.
 
+Stripe integration is based on [this course](https://www.udemy.com/how-to-process-online-payments-with-stripe-and-java-ee/) by Luqman Saeed.
+
 ## Configuration and Deployment
 
 ### H2 database
