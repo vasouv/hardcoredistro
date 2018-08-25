@@ -4,10 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -90,7 +88,6 @@ public class InititalizerBean {
 
         // Purchase for vasouv
         Purchase pVasouv = new Purchase(LocalDate.now(), vasouv, forVasouv, PurchaseStatus.PENDING);
-        pVasouv.setTotalAmount();
 
         // Ordered albums for john
         OrderedAlbum j1 = new OrderedAlbum(2, firepower);
@@ -103,7 +100,6 @@ public class InititalizerBean {
 
         // Purchase for john
         Purchase pJohn = new Purchase(LocalDate.now(), john, forJohn,PurchaseStatus.PENDING);
-        pJohn.setTotalAmount();
 
         // Persists purchases
         purchaseService.create(pVasouv);
@@ -121,7 +117,6 @@ public class InititalizerBean {
         // New purchase persistence
         Purchase newVasouv = new Purchase(LocalDate.now(), vasouv, forVasouvAgain,PurchaseStatus.PENDING);
         newVasouv.setPurchaseStatus(PurchaseStatus.SHIPPED);
-        newVasouv.setTotalAmount();
         newVasouv.setDateShipped(LocalDate.now());
         
         purchaseService.create(newVasouv);

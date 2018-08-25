@@ -52,7 +52,7 @@ public class PurchaseService {
     public void create(List<OrderedAlbum> albumsToOrder, String customerName) {
         Customer customer = customerService.findByName(customerName);
         Purchase pur = new Purchase(LocalDate.now(), customer, albumsToOrder, PurchaseStatus.PENDING);
-        pur.setTotalAmount();
+//        pur.setTotalAmount();
         em.persist(pur);
     }
 
