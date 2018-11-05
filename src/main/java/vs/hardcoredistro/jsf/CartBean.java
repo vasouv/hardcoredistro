@@ -25,7 +25,17 @@ public class CartBean implements Serializable {
 
     public void add(Album album) {
         OrderedAlbum oa = new OrderedAlbum(1, album);
-        orderedAlbums.add(oa);
+        boolean found = false;
+        for (OrderedAlbum album1 : getOrderedAlbums()) {
+            if (album1.getAlbum().equals(album)) {
+                found = true;
+                album1.setQuantity(album1.getQuantity()+1);
+                break;
+            }
+        }
+        if (!found) {
+            getOrderedAlbums().add(oa);
+        }
     }
 
     public void clear() {
