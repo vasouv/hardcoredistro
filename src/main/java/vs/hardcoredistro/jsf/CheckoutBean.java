@@ -74,6 +74,7 @@ public class CheckoutBean {
             Charge charge = paymentService.charge(stripeToken, getTotal(), "EUR");
             if (charge != null) {
                 purchaseService.create(albumsToOrder, loggedInUser.getLoggedInUser());
+                cartBean.clear();
                 Faces.redirect("user/checkout-complete.xhtml");
             } else {
                 revertAlbums();
